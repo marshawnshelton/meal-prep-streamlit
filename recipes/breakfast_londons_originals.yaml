@@ -1,0 +1,236 @@
+# London's Original Breakfast Meals
+# These are the exact meals from her trainer's 30-day plan
+
+- name: "London's Classic Oatmeal"
+  cuisine: "Classic American"
+  meal_type: breakfast
+  servings: 1
+  prep_time: 5
+  cook_time: 7
+  
+  health_benefits:
+    - fiber_rich
+    - heart_healthy
+    - sustained_energy
+  
+  ingredients:
+    - item: "oats"
+      amount: "1/2"
+      unit: "cup"
+    - item: "almond milk"
+      amount: "1"
+      unit: "cup"
+    - item: "cinnamon"
+      amount: "1/2"
+      unit: "tsp"
+    - item: "blueberries"
+      amount: "1/4"
+      unit: "cup"
+    - item: "flaxseed"
+      amount: 1
+      unit: "tbsp"
+      prep: "ground"
+  
+  instructions:
+    - "Bring almond milk to simmer"
+    - "Add oats and cinnamon, cook 5-7 minutes"
+    - "Top with blueberries and flaxseed"
+  
+  meal_prep_notes: "Batch cook oats Sunday, portion and refrigerate, reheat with splash of milk"
+
+- name: "London's Eggs and Turkey Bacon"
+  cuisine: "Classic American"
+  meal_type: breakfast
+  servings: 1
+  prep_time: 5
+  cook_time: 10
+  
+  health_benefits:
+    - high_protein
+    - muscle_recovery
+    - nutrient_dense
+  
+  ingredients:
+    - item: "eggs"
+      amount: 2
+      unit: "whole"
+    - item: "egg whites"
+      amount: 2
+      unit: "whites"
+    - item: "turkey bacon"
+      amount: 2
+      unit: "slices"
+    - item: "spinach"
+      amount: "1"
+      unit: "cup"
+    - item: "sprouted bread"
+      amount: 1
+      unit: "slice"
+    - item: "avocado"
+      amount: "1/4"
+      unit: "avocado"
+  
+  instructions:
+    - "Cook turkey bacon until crisp"
+    - "Scramble eggs and whites in same pan"
+    - "Wilt spinach in last minute"
+    - "Serve with toast and avocado"
+  
+  meal_prep_notes: "Pre-cook turkey bacon Sunday, reheat day of"
+
+- name: "London's Oat Pancakes"
+  cuisine: "Classic American"
+  meal_type: breakfast
+  servings: 1
+  prep_time: 5
+  cook_time: 8
+  
+  health_benefits:
+    - fiber_rich
+    - protein_boost
+    - satisfying
+  
+  ingredients:
+    - item: "oat flour"
+      amount: "1/2"
+      unit: "cup"
+    - item: "egg"
+      amount: 1
+      unit: "whole"
+    - item: "egg white"
+      amount: 1
+      unit: "white"
+    - item: "baking powder"
+      amount: "1/4"
+      unit: "tsp"
+    - item: "cinnamon"
+      amount: "1/4"
+      unit: "tsp"
+    - item: "almond butter"
+      amount: 1
+      unit: "tbsp"
+    - item: "cherries"
+      amount: "1/3"
+      unit: "cup"
+      prep: "fresh or frozen"
+  
+  instructions:
+    - "Mix oat flour, eggs, baking powder, cinnamon"
+    - "Heat non-stick pan with light spray"
+    - "Pour batter to make 2-3 pancakes"
+    - "Cook 2-3 minutes per side"
+    - "Top with almond butter and cherries"
+  
+  meal_prep_notes: "Make extra, freeze between parchment paper, toast to reheat"
+
+- name: "London's Sweet Potato Scramble"
+  cuisine: "Classic American"
+  meal_type: breakfast
+  servings: 1
+  prep_time: 5
+  cook_time: 10
+  
+  health_benefits:
+    - balanced_meal
+    - fiber_rich
+    - anti_inflammatory
+  
+  ingredients:
+    - item: "sweet potato"
+      amount: "1/2"
+      unit: "cup"
+      prep: "cubed"
+    - item: "eggs"
+      amount: 2
+      unit: "whole"
+    - item: "egg whites"
+      amount: 2
+      unit: "whites"
+    - item: "spinach"
+      amount: "1/2"
+      unit: "cup"
+    - item: "olive oil"
+      amount: "1/2"
+      unit: "tsp"
+  
+  instructions:
+    - "Sauté sweet potato cubes in olive oil until tender, about 8 minutes"
+    - "Add spinach, wilt for 1 minute"
+    - "Scramble in eggs and whites"
+    - "Season with salt and pepper"
+  
+  meal_prep_notes: "Pre-roast sweet potatoes Sunday for quick morning assembly"
+
+- name: "London's Boiled Eggs and Sweet Potato"
+  cuisine: "Classic American"
+  meal_type: breakfast
+  servings: 1
+  prep_time: 1
+  cook_time: 0
+  
+  health_benefits:
+    - high_protein
+    - clean_eating
+    - simple_prep
+  
+  ingredients:
+    - item: "hard boiled eggs"
+      amount: 2
+      unit: "eggs"
+    - item: "sweet potato"
+      amount: "1/2"
+      unit: "cup"
+      prep: "cooked"
+    - item: "avocado"
+      amount: "1/4"
+      unit: "avocado"
+    - item: "greens"
+      amount: "1"
+      unit: "cup"
+      prep: "mixed salad greens"
+    - item: "olive oil"
+      amount: "1"
+      unit: "tsp"
+  
+  instructions:
+    - "Peel boiled eggs"
+    - "Arrange sweet potato, avocado, and greens on plate"
+    - "Drizzle with olive oil"
+    - "Season with salt and pepper"
+  
+  meal_prep_notes: "Boil dozen eggs Sunday, roast sweet potatoes in bulk"
+
+- name: "London's Scrambled Eggs with Kale"
+  cuisine: "Classic American"
+  meal_type: breakfast
+  servings: 1
+  prep_time: 5
+  cook_time: 8
+  
+  health_benefits:
+    - high_protein
+    - nutrient_dense
+    - anti_inflammatory
+  
+  ingredients:
+    - item: "eggs"
+      amount: 2
+      unit: "whole"
+    - item: "turkey bacon"
+      amount: 2
+      unit: "slices"
+    - item: "avocado"
+      amount: "1/2"
+      unit: "avocado"
+    - item: "kale"
+      amount: "1"
+      unit: "cup"
+      prep: "sautéed"
+  
+  instructions:
+    - "Cook turkey bacon until crisp"
+    - "Sauté kale in same pan until wilted"
+    - "Scramble eggs"
+    - "Serve with avocado on the side"
+  
+  meal_prep_notes: "Pre-wash and chop kale Sunday"

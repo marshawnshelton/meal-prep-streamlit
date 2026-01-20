@@ -1,0 +1,194 @@
+proteins:
+  chicken_breast:
+    primary_store: costco
+    form: bulk_pack
+    notes: Buy 5-8 lbs every two weeks
+  chicken_thighs:
+    primary_store: costco
+    form: bulk_pack
+    notes: Buy 5 lbs every two weeks
+  salmon:
+    primary_store: costco
+    form: frozen_fillets
+    notes: Bulk frozen individual portions
+  white_fish_variety:
+    primary_store: costco
+    form: frozen
+    notes: Barramundi, orange roughy, whiting - rotate
+  ground_turkey:
+    primary_store: costco
+    form: fresh_pack
+    notes: 93/7 lean
+  turkey_bacon:
+    primary_store: costco
+    form: package
+  catfish:
+    primary_store: petes_produce
+    form: fresh_fillet
+    notes: When available
+  duck:
+    primary_store: whole_foods
+    form: fresh
+    notes: Occasional purchase
+  lobster:
+    primary_store: costco
+    form: frozen_tails
+    notes: Occasional treat
+  crab:
+    primary_store: costco
+    form: frozen
+    notes: Occasional
+starches:
+  sweet_potatoes:
+    primary_store: petes_produce
+    backup_store: costco
+    form: bulk
+    notes: 10-15 lbs every two weeks
+  quinoa:
+    primary_store: costco
+    form: bulk_bag
+    notes: Multi-color preferred
+  rice_varieties:
+    primary_store: costco
+    form: bulk
+    notes: Jasmine, basmati
+  oats:
+    primary_store: costco
+    form: bulk
+    notes: Steel cut and rolled
+  whole_wheat_pasta:
+    primary_store: costco
+    form: box
+  plantains:
+    primary_store: petes_produce
+    form: fresh
+    notes: Buy green and ripe
+  yams:
+    primary_store: petes_produce
+    form: bulk
+  cassava:
+    primary_store: whole_foods
+    form: fresh
+    notes: When making traditional dishes
+vegetables:
+  collard_greens:
+    primary_store: petes_produce
+    backup_store: costco
+    form: fresh_bunch
+    notes: 2-3 bunches per cycle
+  spinach:
+    primary_store: costco
+    form: large_container
+  mixed_greens:
+    primary_store: costco
+    form: large_container
+  peppers_onions:
+    primary_store: petes_produce
+    form: bulk
+  brussels_sprouts:
+    primary_store: petes_produce
+    form: fresh
+  cucumbers:
+    primary_store: petes_produce
+    form: fresh
+  tomatoes:
+    primary_store: petes_produce
+    form: fresh
+  okra:
+    primary_store: petes_produce
+    form: fresh
+    notes: Seasonal
+  cabbage:
+    primary_store: petes_produce
+    form: head
+dairy_eggs:
+  eggs:
+    primary_store: costco
+    form: large_carton
+    notes: 2-3 dozen per cycle
+  greek_yogurt:
+    primary_store: costco
+    form: large_container
+    notes: Plain, full-fat or 2%
+  cottage_cheese:
+    primary_store: costco
+    form: container
+  almond_milk:
+    primary_store: costco
+    form: multi_pack
+  coconut_milk:
+    primary_store: costco
+    form: can
+healthy_fats:
+  olive_oil:
+    primary_store: costco
+    form: large_bottle
+  avocados:
+    primary_store: petes_produce
+    backup_store: costco
+    form: bulk
+  coconut_oil:
+    primary_store: costco
+    form: jar
+nuts_seeds:
+  almonds:
+    primary_store: costco
+    form: bulk_bag
+  pistachios:
+    primary_store: costco
+    form: bulk_bag
+  flaxseed:
+    primary_store: whole_foods
+    form: ground
+  chia_seeds:
+    primary_store: costco
+    form: bag
+grains_legumes:
+  black_eyed_peas:
+    primary_store: costco
+    form: dried_bag
+  lentils:
+    primary_store: costco
+    backup_store: whole_foods
+    form: dried_bag
+    notes: Red lentils for Ethiopian-style
+  chickpeas:
+    primary_store: costco
+    form: dried_or_canned
+seasonings_staples:
+  spice_blends:
+    primary_store: whole_foods
+    notes: Berbere, jerk seasoning, za'atar, gochugaru
+  ginger_garlic:
+    primary_store: petes_produce
+    form: fresh
+  herbs_fresh:
+    primary_store: petes_produce
+    form: bunches
+    notes: Cilantro, parsley, thyme, basil
+  coconut_aminos:
+    primary_store: whole_foods
+    form: bottle
+  tomato_paste:
+    primary_store: petes_produce
+    form: can
+  canned_tomatoes:
+    primary_store: petes_produce
+    form: can
+fruits:
+  blueberries:
+    primary_store: costco
+    form: large_container
+  berries_mixed:
+    primary_store: costco
+    form: frozen_bag
+  bananas:
+    primary_store: costco
+    form: bunch
+  citrus:
+    primary_store: petes_produce
+    form: bulk
+  dates:
+    primary_store: whole_foods
+    form: package
+    notes: For sweet treats

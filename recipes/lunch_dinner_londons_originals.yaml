@@ -1,0 +1,339 @@
+# London's Original Lunch & Dinner Meals
+# From her trainer's 30-day plan
+
+- name: "London's Chicken Thigh Wrap"
+  cuisine: "Classic American"
+  meal_type: lunch_or_dinner
+  servings: 1
+  prep_time: 5
+  cook_time: 12
+  
+  health_benefits:
+    - high_protein
+    - balanced_meal
+    - portable
+  
+  ingredients:
+    - item: "chicken thighs"
+      amount: 4
+      unit: "oz"
+      prep: "cooked"
+    - item: "whole wheat wrap"
+      amount: 1
+      unit: "6-inch"
+    - item: "hummus"
+      amount: 2
+      unit: "tbsp"
+    - item: "spinach"
+      amount: "1/2"
+      unit: "cup"
+    - item: "cucumber"
+      amount: "1/3"
+      unit: "cup"
+      prep: "diced"
+    - item: "pickles"
+      amount: 2
+      unit: "slices"
+  
+  instructions:
+    - "Grill or pan-sear chicken thighs"
+    - "Spread hummus on wrap"
+    - "Layer spinach, cucumber, pickles"
+    - "Add sliced chicken and wrap"
+  
+  meal_prep_notes: "Batch cook chicken Sunday, assemble wraps fresh"
+
+- name: "London's Tuna Lettuce Wraps"
+  cuisine: "Classic American"
+  meal_type: lunch_or_dinner
+  servings: 1
+  prep_time: 5
+  cook_time: 0
+  
+  health_benefits:
+    - high_protein
+    - omega_3
+    - low_carb
+  
+  ingredients:
+    - item: "tuna"
+      amount: "3.5"
+      unit: "oz"
+      prep: "canned in water"
+    - item: "lettuce leaves"
+      amount: 2
+      unit: "large"
+    - item: "cucumber"
+      amount: "1/4"
+      unit: "cup"
+      prep: "diced"
+    - item: "olive oil"
+      amount: 1
+      unit: "tsp"
+    - item: "olives"
+      amount: 3
+      unit: "olives"
+  
+  instructions:
+    - "Drain tuna and mix with olive oil"
+    - "Add diced cucumber and olives"
+    - "Scoop into lettuce leaves"
+    - "Season with salt and pepper"
+  
+  meal_prep_notes: "Quick assembly, no cooking needed"
+
+- name: "London's Turkey and Quinoa Bowl"
+  cuisine: "Classic American"
+  meal_type: lunch_or_dinner
+  servings: 1
+  prep_time: 5
+  cook_time: 15
+  
+  health_benefits:
+    - high_protein
+    - fiber_rich
+    - balanced_macros
+  
+  ingredients:
+    - item: "ground turkey"
+      amount: 4
+      unit: "oz"
+    - item: "quinoa"
+      amount: "1/2"
+      unit: "cup"
+      prep: "cooked"
+    - item: "peppers and onions"
+      amount: "1/2"
+      unit: "cup"
+      prep: "mixed"
+    - item: "salad greens"
+      amount: "1"
+      unit: "cup"
+    - item: "olive oil"
+      amount: 1
+      unit: "tsp"
+  
+  instructions:
+    - "Cook ground turkey with peppers and onions"
+    - "Serve over quinoa with side salad"
+    - "Drizzle with olive oil"
+  
+  meal_prep_notes: "Batch cook quinoa and turkey separately Sunday"
+
+- name: "London's Salmon with Brussels Sprouts"
+  cuisine: "Classic American"
+  meal_type: lunch_or_dinner
+  servings: 1
+  prep_time: 5
+  cook_time: 15
+  
+  health_benefits:
+    - omega_3_powerhouse
+    - anti_inflammatory
+    - heart_healthy
+  
+  ingredients:
+    - item: "salmon"
+      amount: 4
+      unit: "oz"
+    - item: "quinoa"
+      amount: "1/2"
+      unit: "cup"
+      prep: "cooked"
+    - item: "brussels sprouts"
+      amount: "3/4"
+      unit: "cup"
+      prep: "roasted"
+    - item: "olive oil"
+      amount: 1
+      unit: "tsp"
+    - item: "lemon"
+      amount: "1/2"
+      unit: "lemon"
+  
+  instructions:
+    - "Season salmon with salt, pepper, lemon juice"
+    - "Bake at 400°F for 12-15 minutes"
+    - "Roast brussels sprouts with olive oil"
+    - "Serve over quinoa"
+  
+  meal_prep_notes: "Can prep salmon portions Sunday for easy weeknight cooking"
+
+- name: "London's Grilled Chicken Pita"
+  cuisine: "Mediterranean-American"
+  meal_type: lunch_or_dinner
+  servings: 1
+  prep_time: 5
+  cook_time: 12
+  
+  health_benefits:
+    - high_protein
+    - portable
+    - balanced
+  
+  ingredients:
+    - item: "chicken breast"
+      amount: 4
+      unit: "oz"
+    - item: "whole wheat pita"
+      amount: 1
+      unit: "pita"
+    - item: "hummus"
+      amount: 2
+      unit: "tbsp"
+    - item: "lettuce and cucumber"
+      amount: "1/2"
+      unit: "cup"
+  
+  instructions:
+    - "Grill chicken breast"
+    - "Warm pita"
+    - "Spread hummus, add lettuce, cucumber, sliced chicken"
+  
+  meal_prep_notes: "Grill multiple chicken breasts Sunday"
+
+- name: "London's Catfish with Collards"
+  cuisine: "Southern Soul"
+  meal_type: lunch_or_dinner
+  servings: 1
+  prep_time: 5
+  cook_time: 20
+  
+  health_benefits:
+    - omega_3
+    - anti_inflammatory
+    - traditional_comfort
+  
+  ingredients:
+    - item: "catfish fillet"
+      amount: 4
+      unit: "oz"
+    - item: "cajun seasoning"
+      amount: 1
+      unit: "tsp"
+    - item: "quinoa"
+      amount: "1/2"
+      unit: "cup"
+      prep: "cooked"
+    - item: "collard greens"
+      amount: "3/4"
+      unit: "cup"
+      prep: "cooked"
+  
+  instructions:
+    - "Season catfish with cajun spices"
+    - "Pan-sear 4-5 minutes per side"
+    - "Serve over quinoa with collards"
+  
+  cultural_note: "Southern classic made clean"
+  meal_prep_notes: "Batch cook collards Sunday, fish cooks fresh quickly"
+
+- name: "London's Seaweed Salmon Roll"
+  cuisine: "Japanese-Inspired"
+  meal_type: lunch_or_dinner
+  servings: 1
+  prep_time: 5
+  cook_time: 0
+  
+  health_benefits:
+    - omega_3
+    - iodine_rich
+    - low_carb
+  
+  ingredients:
+    - item: "seaweed sheets"
+      amount: 2
+      unit: "sheets"
+      prep: "nori"
+    - item: "canned salmon"
+      amount: 2
+      unit: "oz"
+    - item: "avocado"
+      amount: "1/4"
+      unit: "avocado"
+    - item: "cucumber"
+      amount: "1/4"
+      unit: "cup"
+  
+  instructions:
+    - "Lay out seaweed sheets"
+    - "Layer salmon, avocado, cucumber"
+    - "Roll tightly and slice"
+  
+  meal_prep_notes: "Quick assembly lunch option"
+
+- name: "London's Chicken Stew with Root Vegetables"
+  cuisine: "Classic American"
+  meal_type: lunch_or_dinner
+  servings: 2
+  prep_time: 10
+  cook_time: 35
+  
+  health_benefits:
+    - high_protein
+    - vegetable_rich
+    - comfort_food
+  
+  ingredients:
+    - item: "chicken thighs"
+      amount: 8
+      unit: "oz"
+      prep: "cubed"
+    - item: "root vegetables"
+      amount: "1/2"
+      unit: "cup"
+      prep: "carrots, celery, onions"
+    - item: "sweet potatoes"
+      amount: "1/2"
+      unit: "cup"
+      prep: "cubed"
+    - item: "chicken broth"
+      amount: "2"
+      unit: "cups"
+    - item: "thyme"
+      amount: "1/2"
+      unit: "tsp"
+  
+  instructions:
+    - "Brown chicken in pot"
+    - "Add vegetables, broth, thyme"
+    - "Simmer 30 minutes until tender"
+  
+  meal_prep_notes: "Make large batch, freeze portions"
+
+- name: "London's Crawfish Salad"
+  cuisine: "Louisiana-Inspired"
+  meal_type: lunch_or_dinner
+  servings: 1
+  prep_time: 5
+  cook_time: 0
+  
+  health_benefits:
+    - high_protein
+    - low_calorie
+    - refreshing
+  
+  ingredients:
+    - item: "crawfish tails"
+      amount: 3
+      unit: "oz"
+      prep: "cooked"
+    - item: "avocado"
+      amount: "1/4"
+      unit: "avocado"
+    - item: "cucumbers and cilantro"
+      amount: "1/2"
+      unit: "cup"
+    - item: "olive oil"
+      amount: 1
+      unit: "tsp"
+    - item: "lime"
+      amount: "1/2"
+      unit: "lime"
+  
+  instructions:
+    - "Toss crawfish with diced cucumber, cilantro"
+    - "Add avocado chunks"
+    - "Dress with olive oil and lime juice"
+  
+  meal_prep_notes: "Buy pre-cooked crawfish for convenience"

@@ -1,0 +1,85 @@
+# Meal Prep System Configuration
+# Based on London's dietary fitness baseline
+
+system:
+  planning_cycle_days: 14  # Bi-weekly planning
+  people: 2  # You and your girlfriend
+  budget_per_cycle: 400  # Bi-weekly budget in dollars
+
+dietary_goals:
+  focus: "anti-inflammatory, muscle growth/retention, fiber-rich, earth starches for energy"
+  approach: "whole foods, no macro counting"
+  protein_sources:
+    - chicken_breast
+    - chicken_thighs
+    - salmon
+    - white_fish  # whiting, orange roughy, barramundi
+    - turkey
+    - duck  # occasional
+    - lobster  # occasional
+    - crab  # occasional
+  excluded_ingredients:
+    - pork
+    - peanuts
+    - red_meat
+    - rosemary
+    - mustard
+    - sauerkraut
+
+stores:
+  costco:
+    type: bulk
+    membership: executive
+    best_for:
+      - proteins_frozen
+      - proteins_bulk
+      - pantry_staples
+  whole_foods:
+    type: specialty
+    best_for:
+      - specialty_grains
+      - organic_items
+      - unique_ingredients
+  petes_produce:
+    type: fresh
+    best_for:
+      - fresh_vegetables
+      - seasonal_produce
+      - herbs
+
+meal_structure:
+  breakfast:
+    timing: "8:00 AM"
+    baseline_calories: "300-400"
+  snack_morning:
+    timing: "10:30 AM"
+    baseline_calories: "150-200"
+  lunch:
+    timing: "1:00 PM"
+    baseline_calories: "400-500"
+  snack_afternoon:
+    timing: "4:00 PM"
+    baseline_calories: "150-200"
+  dinner:
+    timing: "7:30 PM"
+    baseline_calories: "400-500"
+
+cuisine_rotations:
+  - traditional_african_american
+  - west_african
+  - caribbean
+  - mediterranean
+  - asian
+  - latin_american
+
+portion_guidelines:
+  # Based on London's plan
+  protein_main: "4 oz cooked"
+  protein_eggs: "2 whole + 2 whites OR 2 whole"
+  starch_cooked: "1/2-2/3 cup"
+  vegetables_cooked: "3/4-1 cup"
+  vegetables_raw: "1 cup"
+  healthy_fats: "1 tsp olive oil OR 1/4 avocado"
+  nuts_seeds: "10-12 pieces OR 1 tbsp"
+  dairy_yogurt: "3/4 cup"
+  grains_breakfast: "1/2 cup cooked"

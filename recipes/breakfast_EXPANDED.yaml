@@ -1,0 +1,83 @@
+# Breakfast Recipes - EXPANDED LIBRARY
+# London's original meals + Cultural translations + American classics
+
+# === LONDON'S ORIGINAL MEALS ===
+
+- name: "Classic Oatmeal Bowl"
+  translation_from: "London Day 1"
+  cuisine: "Classic American"
+  meal_type: breakfast
+  servings: 1
+  prep_time: 5
+  cook_time: 7
+  health_benefits: [fiber_rich, heart_healthy, sustained_energy]
+  ingredients:
+    - {item: "oats", amount: "1/2", unit: "cup"}
+    - {item: "almond milk", amount: "1", unit: "cup"}
+    - {item: "cinnamon", amount: "1/2", unit: "tsp"}
+    - {item: "blueberries", amount: "1/4", unit: "cup"}
+    - {item: "flaxseed", amount: 1, unit: "tbsp", prep: "ground"}
+  instructions:
+    - "Bring almond milk to simmer, add oats and cinnamon"
+    - "Cook 5-7 minutes, top with blueberries and flaxseed"
+  meal_prep_notes: "Batch cook Sunday, portion and refrigerate"
+
+- name: "Scrambled Eggs with Turkey Bacon"
+  translation_from: "London Day 2"
+  cuisine: "Classic American"
+  meal_type: breakfast
+  servings: 1
+  prep_time: 5
+  cook_time: 10
+  health_benefits: [high_protein, muscle_recovery]
+  ingredients:
+    - {item: "eggs", amount: 2, unit: "whole"}
+    - {item: "egg whites", amount: 2, unit: "whites"}
+    - {item: "turkey bacon", amount: 2, unit: "slices"}
+    - {item: "spinach", amount: "1", unit: "cup"}
+    - {item: "sprouted bread", amount: 1, unit: "slice"}
+    - {item: "avocado", amount: "1/4", unit: "avocado"}
+  instructions:
+    - "Cook turkey bacon until crisp"
+    - "Scramble eggs and whites, wilt spinach in last minute"
+    - "Serve with toast and avocado"
+
+- name: "Oat Pancakes"
+  translation_from: "London Day 3"
+  cuisine: "Classic American"
+  meal_type: breakfast
+  servings: 1
+  prep_time: 5
+  cook_time: 8
+  health_benefits: [fiber_rich, protein_boost]
+  ingredients:
+    - {item: "oat flour", amount: "1/2", unit: "cup"}
+    - {item: "egg", amount: 1, unit: "whole"}
+    - {item: "egg white", amount: 1, unit: "white"}
+    - {item: "baking powder", amount: "1/4", unit: "tsp"}
+    - {item: "cinnamon", amount: "1/4", unit: "tsp"}
+    - {item: "almond butter", amount: 1, unit: "tbsp"}
+    - {item: "cherries", amount: "1/3", unit: "cup"}
+  instructions:
+    - "Mix flour, eggs, baking powder, cinnamon"
+    - "Cook 2-3 minutes per side"
+    - "Top with almond butter and cherries"
+
+- name: "Sweet Potato Egg Scramble"
+  translation_from: "London Day 5"
+  cuisine: "Classic American"
+  meal_type: breakfast
+  servings: 1
+  prep_time: 5
+  cook_time: 10
+  health_benefits: [balanced_meal, fiber_rich, anti_inflammatory]
+  ingredients:
+    - {item: "sweet potato", amount: "1/2", unit: "cup", prep: "cubed"}
+    - {item: "eggs", amount: 2, unit: "whole"}
+    - {item: "egg whites", amount: 2, unit: "whites"}
+    - {item: "spinach", amount: "1/2", unit: "cup"}
+    - {item: "olive oil", amount: "1/2", unit: "tsp"}
+  instructions:
+    - "Sauté sweet potato in oil until tender"
+    - "Add spinach, scramble in eggs"
+

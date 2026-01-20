@@ -1,0 +1,375 @@
+# Italian-Inspired Clean Eating Recipes
+# Classic Italian flavors with healthy modifications
+
+- name: "Turkey Piccata with Zucchini Noodles"
+  cuisine: "Italian"
+  meal_type: lunch_or_dinner
+  servings: 2
+  prep_time: 10
+  cook_time: 15
+  
+  health_benefits:
+    - high_protein
+    - low_carb
+    - anti_inflammatory
+  
+  ingredients:
+    - item: "turkey cutlets"
+      amount: 8
+      unit: "oz"
+      prep: "pounded thin"
+    - item: "zucchini"
+      amount: 3
+      unit: "medium"
+      prep: "spiralized"
+    - item: "lemon"
+      amount: 1
+      unit: "whole"
+      prep: "juice and zest"
+    - item: "capers"
+      amount: 2
+      unit: "tbsp"
+    - item: "garlic"
+      amount: 3
+      unit: "cloves"
+      prep: "minced"
+    - item: "olive oil"
+      amount: 2
+      unit: "tsp"
+    - item: "chicken broth"
+      amount: "1/4"
+      unit: "cup"
+  
+  instructions:
+    - "Season turkey cutlets with salt and pepper"
+    - "Pan-sear in olive oil 3-4 minutes per side, set aside"
+    - "Sauté garlic, add broth, lemon juice, capers"
+    - "Return turkey to pan, simmer 2 minutes"
+    - "Serve over sautéed zucchini noodles"
+  
+  cultural_note: "Classic piccata gets clean with turkey and veggie noodles"
+  meal_prep_notes: "Spiralize zucchini ahead, cook turkey fresh for best texture"
+
+- name: "Chicken Cacciatore with Sweet Potato Polenta"
+  cuisine: "Italian-Soul Fusion"
+  meal_type: lunch_or_dinner
+  servings: 2
+  prep_time: 15
+  cook_time: 40
+  
+  health_benefits:
+    - high_protein
+    - antioxidant_rich
+    - comfort_food
+  
+  ingredients:
+    - item: "chicken thighs"
+      amount: 8
+      unit: "oz"
+      prep: "bone-in or boneless"
+    - item: "tomatoes"
+      amount: "1"
+      unit: "cup"
+      prep: "diced, canned"
+    - item: "bell peppers"
+      amount: "1/2"
+      unit: "cup"
+      prep: "sliced"
+    - item: "onions"
+      amount: "1/2"
+      unit: "medium"
+      prep: "sliced"
+    - item: "garlic"
+      amount: 3
+      unit: "cloves"
+    - item: "oregano"
+      amount: 1
+      unit: "tsp"
+    - item: "basil"
+      amount: 1
+      unit: "tsp"
+    - item: "sweet potato"
+      amount: "1"
+      unit: "cup"
+      prep: "for polenta"
+    - item: "olive oil"
+      amount: 2
+      unit: "tsp"
+  
+  instructions:
+    - "Brown chicken in olive oil, set aside"
+    - "Sauté onions, peppers, garlic"
+    - "Add tomatoes, oregano, basil, return chicken"
+    - "Simmer 30 minutes until chicken is tender"
+    - "For polenta: mash cooked sweet potato with splash of almond milk"
+    - "Serve chicken over sweet potato polenta"
+  
+  cultural_note: "Hunter's stew meets Southern comfort"
+  meal_prep_notes: "Freezes beautifully, make double batch"
+
+- name: "Baked Salmon Puttanesca"
+  cuisine: "Italian-Mediterranean"
+  meal_type: lunch_or_dinner
+  servings: 2
+  prep_time: 10
+  cook_time: 20
+  
+  health_benefits:
+    - omega_3_rich
+    - heart_healthy
+    - bold_flavors
+  
+  ingredients:
+    - item: "salmon fillets"
+      amount: 8
+      unit: "oz"
+    - item: "tomatoes"
+      amount: "1"
+      unit: "cup"
+      prep: "cherry, halved"
+    - item: "olives"
+      amount: "1/4"
+      unit: "cup"
+      prep: "kalamata, pitted"
+    - item: "capers"
+      amount: 2
+      unit: "tbsp"
+    - item: "garlic"
+      amount: 3
+      unit: "cloves"
+      prep: "sliced"
+    - item: "red pepper flakes"
+      amount: "1/4"
+      unit: "tsp"
+    - item: "olive oil"
+      amount: 2
+      unit: "tsp"
+    - item: "zucchini"
+      amount: 2
+      unit: "medium"
+      prep: "spiralized or sliced"
+  
+  instructions:
+    - "Place salmon in baking dish"
+    - "Top with tomatoes, olives, capers, garlic, pepper flakes"
+    - "Drizzle with olive oil"
+    - "Bake at 400°F for 15-18 minutes"
+    - "Serve over sautéed zucchini"
+  
+  cultural_note: "Classic Neapolitan sauce meets omega-3 power"
+  meal_prep_notes: "Prep sauce components ahead, assemble and bake fresh"
+
+- name: "Turkey Meatballs Marinara with Spaghetti Squash"
+  cuisine: "Italian-American"
+  meal_type: lunch_or_dinner
+  servings: 2
+  prep_time: 15
+  cook_time: 30
+  
+  health_benefits:
+    - high_protein
+    - low_carb
+    - family_friendly
+  
+  ingredients:
+    - item: "ground turkey"
+      amount: 8
+      unit: "oz"
+    - item: "egg"
+      amount: 1
+      unit: "whole"
+    - item: "almond flour"
+      amount: "2"
+      unit: "tbsp"
+    - item: "garlic"
+      amount: 2
+      unit: "cloves"
+      prep: "minced"
+    - item: "italian seasoning"
+      amount: 1
+      unit: "tsp"
+    - item: "marinara sauce"
+      amount: "1.5"
+      unit: "cups"
+      prep: "no added sugar"
+    - item: "spaghetti squash"
+      amount: 1
+      unit: "medium"
+    - item: "basil"
+      amount: "1/4"
+      unit: "cup"
+      prep: "fresh"
+  
+  instructions:
+    - "Roast spaghetti squash: cut in half, bake at 400°F for 40 minutes"
+    - "Mix turkey, egg, almond flour, garlic, italian seasoning"
+    - "Form 8 meatballs"
+    - "Bake meatballs at 375°F for 20 minutes"
+    - "Heat marinara, add meatballs, simmer 10 minutes"
+    - "Scrape out spaghetti squash strands with fork"
+    - "Serve meatballs over squash, top with fresh basil"
+  
+  meal_prep_notes: "Meatballs freeze perfectly, roast squash ahead"
+
+- name: "Chicken Saltimbocca with Roasted Vegetables"
+  cuisine: "Italian"
+  meal_type: lunch_or_dinner
+  servings: 2
+  prep_time: 10
+  cook_time: 20
+  
+  health_benefits:
+    - high_protein
+    - iron_rich
+    - elegant_simple
+  
+  ingredients:
+    - item: "chicken breast"
+      amount: 8
+      unit: "oz"
+      prep: "pounded thin"
+    - item: "turkey bacon"
+      amount: 4
+      unit: "slices"
+      prep: "as prosciutto substitute"
+    - item: "sage"
+      amount: 8
+      unit: "leaves"
+      prep: "fresh"
+    - item: "white wine"
+      amount: "1/4"
+      unit: "cup"
+      prep: "or chicken broth"
+    - item: "garlic"
+      amount: 2
+      unit: "cloves"
+    - item: "mixed vegetables"
+      amount: "2"
+      unit: "cups"
+      prep: "peppers, zucchini, onions"
+    - item: "olive oil"
+      amount: 2
+      unit: "tsp"
+  
+  instructions:
+    - "Top each chicken cutlet with sage leaves and turkey bacon"
+    - "Secure with toothpicks"
+    - "Pan-sear in olive oil 4 minutes per side"
+    - "Remove chicken, add wine/broth to deglaze"
+    - "Return chicken, simmer 2 minutes"
+    - "Serve with roasted vegetables"
+  
+  cultural_note: "Roman classic adapted for clean eating"
+  meal_prep_notes: "Can prep chicken rolls ahead, cook fresh"
+
+- name: "Italian White Fish en Papillote"
+  cuisine: "Italian"
+  meal_type: lunch_or_dinner
+  servings: 2
+  prep_time: 10
+  cook_time: 15
+  
+  health_benefits:
+    - omega_3
+    - low_calorie
+    - foolproof_cooking
+  
+  ingredients:
+    - item: "white fish fillets"
+      amount: 8
+      unit: "oz"
+      prep: "barramundi or whiting"
+    - item: "cherry tomatoes"
+      amount: "1"
+      unit: "cup"
+      prep: "halved"
+    - item: "zucchini"
+      amount: 1
+      unit: "medium"
+      prep: "sliced"
+    - item: "garlic"
+      amount: 3
+      unit: "cloves"
+      prep: "sliced"
+    - item: "lemon"
+      amount: 1
+      unit: "whole"
+      prep: "sliced"
+    - item: "basil"
+      amount: "1/4"
+      unit: "cup"
+      prep: "fresh"
+    - item: "olive oil"
+      amount: 2
+      unit: "tsp"
+    - item: "white wine"
+      amount: 2
+      unit: "tbsp"
+      prep: "optional"
+  
+  instructions:
+    - "Cut 2 large pieces of parchment paper"
+    - "On each: layer zucchini, top with fish"
+    - "Add tomatoes, garlic, lemon slices, basil"
+    - "Drizzle with olive oil and wine"
+    - "Fold parchment into packets"
+    - "Bake at 400°F for 12-15 minutes"
+    - "Carefully open packets (steam!)"
+  
+  cultural_note: "Parchment packet cooking keeps fish moist and infuses flavor"
+  meal_prep_notes: "Assemble packets in morning, bake at dinner time"
+
+- name: "Italian Turkey Sausage with Peppers"
+  cuisine: "Italian-American"
+  meal_type: lunch_or_dinner
+  servings: 2
+  prep_time: 10
+  cook_time: 20
+  
+  health_benefits:
+    - high_protein
+    - vegetable_rich
+    - comfort_food
+  
+  ingredients:
+    - item: "ground turkey"
+      amount: 8
+      unit: "oz"
+    - item: "fennel seeds"
+      amount: 1
+      unit: "tsp"
+    - item: "italian seasoning"
+      amount: 1
+      unit: "tsp"
+    - item: "red pepper flakes"
+      amount: "1/4"
+      unit: "tsp"
+    - item: "bell peppers"
+      amount: 2
+      unit: "large"
+      prep: "mixed colors, sliced"
+    - item: "onions"
+      amount: 1
+      unit: "large"
+      prep: "sliced"
+    - item: "garlic"
+      amount: 3
+      unit: "cloves"
+    - item: "olive oil"
+      amount: 2
+      unit: "tsp"
+    - item: "marinara sauce"
+      amount: "1/2"
+      unit: "cup"
+      prep: "optional"
+  
+  instructions:
+    - "Mix turkey with fennel seeds, italian seasoning, pepper flakes"
+    - "Form into 6 small patties or crumble"
+    - "Brown turkey in olive oil"
+    - "Add peppers, onions, garlic"
+    - "Sauté until peppers are soft, 15 minutes"
+    - "Add marinara if desired"
+    - "Serve over cauliflower rice or zucchini noodles"
+  
+  meal_prep_notes: "Make sausage patties in bulk, freeze"

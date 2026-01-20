@@ -1,0 +1,226 @@
+# Snack Recipes
+# Based on London's portion guidelines
+
+- name: "Protein Shake Base"
+  translation_from: "London's pre-made protein shakes"
+  cuisine: "Universal"
+  meal_type: snack
+  servings: 1
+  prep_time: 3
+  
+  health_benefits:
+    - quick_protein
+    - muscle_recovery
+    - convenient
+  
+  ingredients:
+    - item: "protein powder"
+      amount: 1
+      unit: "scoop"
+      prep: "plant-based or whey"
+    - item: "almond milk"
+      amount: "8 oz"
+      unit: "oz"
+    - item: "ice"
+      amount: "4-5"
+      unit: "cubes"
+    - item: "optional additions"
+      amount: "varies"
+      unit: "varies"
+      prep: "banana, spinach, berries, nut butter"
+  
+  instructions:
+    - "Blend all ingredients until smooth"
+    - "Consume within 30 minutes of preparation"
+  
+  variations:
+    - "Green Power: Add 1 cup spinach, 1/2 banana"
+    - "Berry Blast: Add 1/2 cup mixed berries"
+    - "Tropical Vibes: Add 1/4 cup mango, coconut water instead of almond milk"
+  
+  meal_prep_notes: "Prep smoothie bags in freezer with frozen fruit, pour into blender with liquid"
+
+- name: "Nuts and Fruit Pairing"
+  translation_from: "London's various nut-fruit snacks"
+  cuisine: "Universal"
+  meal_type: snack
+  servings: 1
+  prep_time: 1
+  
+  health_benefits:
+    - healthy_fats
+    - quick_energy
+    - anti_inflammatory
+  
+  base_template:
+    nuts_amount: "10-12 pieces OR 1 tbsp"
+    fruit_amount: "1/2 piece OR 1/4-1/2 cup"
+  
+  combinations:
+    - pairing: "Almonds and Pear"
+      nuts: "12 almonds"
+      fruit: "1/2 pear"
+    - pairing: "Pistachios and Grapes"
+      nuts: "10 pistachios"
+      fruit: "10 grapes"
+    - pairing: "Cashews and Apple"
+      nuts: "10 cashews"
+      fruit: "1/2 apple"
+    - pairing: "Walnuts and Berries"
+      nuts: "6 walnut halves"
+      fruit: "1/4 cup mixed berries"
+  
+  meal_prep_notes: "Portion nuts into small containers Sunday, grab fruit fresh"
+  store_efficiency: "Bulk nuts from Costco, rotate fruit from Pete's Produce and Aldi"
+
+- name: "Greek Yogurt Power Bowl"
+  translation_from: "London Day 1 & 3 - Greek yogurt with granola and fruit"
+  cuisine: "Universal"
+  meal_type: snack
+  servings: 1
+  prep_time: 2
+  
+  health_benefits:
+    - probiotic_rich
+    - protein_boost
+    - gut_health
+  
+  ingredients:
+    - item: "greek yogurt"
+      amount: "3/4 cup"
+      unit: "cup"
+      prep: "plain, full-fat or 2%"
+    - item: "granola"
+      amount: "1/4 cup"
+      unit: "cup"
+      prep: "low-sugar"
+    - item: "fruit"
+      amount: "1/4-1/2 cup"
+      unit: "cup"
+      prep: "berries, pear, grapes, cherries"
+    - item: "optional toppings"
+      amount: "varies"
+      unit: "varies"
+      prep: "cinnamon, chia seeds, hemp hearts"
+  
+  instructions:
+    - "Scoop yogurt into bowl"
+    - "Top with granola and fruit"
+    - "Add optional toppings"
+  
+  cultural_variations:
+    - "West African: Add dates and coconut flakes"
+    - "Caribbean: Add mango and lime zest"
+    - "Soul: Add pecans and sweet potato puree drizzle"
+  
+  meal_prep_notes: "Portion yogurt and granola separately, combine day of to keep granola crunchy"
+
+- name: "Boiled Egg Plate"
+  translation_from: "London's boiled egg snacks"
+  cuisine: "Universal"
+  meal_type: snack
+  servings: 1
+  prep_time: 1
+  cook_time: 0
+  
+  health_benefits:
+    - complete_protein
+    - filling
+    - brain_health
+  
+  base:
+    - item: "hard boiled eggs"
+      amount: "1-2"
+      unit: "eggs"
+  
+  accompaniments:
+    - pairing: "Classic"
+      sides: "1/3 cup cucumber slices, 5 pistachios"
+    - pairing: "Mediterranean"
+      sides: "5 olives, cherry tomatoes"
+    - pairing: "Simple"
+      sides: "Dash of paprika or Everything Bagel seasoning"
+  
+  instructions:
+    - "Peel boiled egg"
+    - "Season lightly"
+    - "Pair with chosen accompaniment"
+  
+  meal_prep_notes: "Boil dozen eggs Sunday, store in fridge up to 5 days"
+  store_efficiency: "Costco eggs in bulk"
+
+- name: "Cottage Cheese and Fruit"
+  translation_from: "London Day 4 & 7 - Cottage cheese with berries/cherries"
+  cuisine: "Universal"
+  meal_type: snack
+  servings: 1
+  prep_time: 2
+  
+  health_benefits:
+    - high_protein
+    - calcium_rich
+    - gut_health
+  
+  ingredients:
+    - item: "cottage cheese"
+      amount: "1/2 cup"
+      unit: "cup"
+      prep: "full-fat or 2%"
+    - item: "fruit"
+      amount: "1/4 cup"
+      unit: "cup"
+      prep: "berries, cherries, or tropical"
+    - item: "optional toppings"
+      amount: "varies"
+      unit: "varies"
+      prep: "cinnamon, vanilla, chia seeds"
+  
+  instructions:
+    - "Scoop cottage cheese into bowl"
+    - "Top with fruit"
+    - "Add optional flavor enhancers"
+  
+  savory_option:
+    - "Replace fruit with cucumber, cherry tomatoes, everything bagel seasoning"
+  
+  meal_prep_notes: "Keep cottage cheese and fruit separate until eating"
+
+- name: "Spiced Roasted Chickpeas"
+  translation_from: "New anti-inflammatory snack option"
+  cuisine: "Mediterranean-African Fusion"
+  meal_type: snack
+  servings: 4
+  prep_time: 5
+  cook_time: 35
+  
+  health_benefits:
+    - fiber_rich
+    - plant_protein
+    - crunchy_satisfying
+  
+  ingredients:
+    - item: "chickpeas"
+      amount: "1.5 cups"
+      unit: "cups"
+      prep: "cooked, drained, dried"
+    - item: "olive oil"
+      amount: 1
+      unit: "tbsp"
+    - item: "spice blend choice"
+      amount: "1.5"
+      unit: "tsp"
+      prep: "berbere, za'atar, or jerk"
+    - item: "sea salt"
+      amount: "1/4"
+      unit: "tsp"
+  
+  instructions:
+    - "Pat chickpeas completely dry with towel"
+    - "Toss with olive oil and spices"
+    - "Spread on baking sheet in single layer"
+    - "Roast at 400°F for 30-35 minutes, shaking pan every 10 minutes"
+    - "Cool completely before storing"
+  
+  cultural_note: "Same base, multiple cultural expressions through spice blends"
+  meal_prep_notes: "Make large batch Sunday, store in airtight container up to 5 days"
+  portion: "1/3 cup per serving"

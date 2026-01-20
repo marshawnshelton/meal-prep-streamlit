@@ -1,0 +1,347 @@
+# Ingredient Price Database
+# Update prices here as they change at your stores
+# Prices are per unit (lb, each, bunch, etc.)
+
+proteins:
+  chicken_breast:
+    costco: 3.99  # per lb
+    whole_foods: 6.99
+    petes_produce: null
+    unit: "lb"
+    
+  chicken_thighs:
+    costco: 2.99
+    whole_foods: 5.49
+    petes_produce: null
+    unit: "lb"
+    
+  ground_turkey:
+    costco: 4.49
+    whole_foods: 6.99
+    petes_produce: null
+    unit: "lb"
+    
+  salmon:
+    costco: 12.99
+    whole_foods: 16.99
+    petes_produce: null
+    unit: "lb"
+    
+  white_fish:
+    costco: 8.99
+    whole_foods: 12.99
+    petes_produce: null
+    unit: "lb"
+    
+  catfish:
+    costco: 9.99
+    whole_foods: 13.99
+    petes_produce: null
+    unit: "lb"
+    
+  shrimp:
+    costco: 11.99
+    whole_foods: 15.99
+    petes_produce: null
+    unit: "lb"
+    
+  canned_tuna:
+    costco: 1.29
+    whole_foods: 2.49
+    petes_produce: null
+    unit: "can"
+    
+  canned_salmon:
+    costco: 2.99
+    whole_foods: 4.49
+    petes_produce: null
+    unit: "can"
+
+eggs_dairy:
+  eggs:
+    costco: 5.99  # per dozen
+    whole_foods: 7.99
+    petes_produce: null
+    unit: "dozen"
+    
+  almond_milk:
+    costco: 3.49  # per carton
+    whole_foods: 4.99
+    petes_produce: null
+    unit: "carton"
+    
+  greek_yogurt:
+    costco: 5.99  # per tub (32 oz)
+    whole_foods: 6.99
+    petes_produce: null
+    unit: "tub"
+    
+  cottage_cheese:
+    costco: 4.49
+    whole_foods: 5.99
+    petes_produce: null
+    unit: "container"
+
+vegetables:
+  sweet_potato:
+    costco: 0.99  # per lb
+    whole_foods: 1.49
+    petes_produce: 0.79
+    unit: "lb"
+    
+  collard_greens:
+    costco: null
+    whole_foods: 2.99
+    petes_produce: 1.99
+    unit: "bunch"
+    
+  spinach:
+    costco: 3.99  # per bag
+    whole_foods: 4.99
+    petes_produce: 2.99
+    unit: "bag"
+    
+  kale:
+    costco: 2.99
+    whole_foods: 3.99
+    petes_produce: 2.49
+    unit: "bunch"
+    
+  zucchini:
+    costco: 1.99
+    whole_foods: 2.49
+    petes_produce: 1.49
+    unit: "lb"
+    
+  bell_peppers:
+    costco: 1.49
+    whole_foods: 1.99
+    petes_produce: 1.29
+    unit: "each"
+    
+  onions:
+    costco: 0.79
+    whole_foods: 0.99
+    petes_produce: 0.69
+    unit: "lb"
+    
+  tomatoes:
+    costco: 1.99
+    whole_foods: 2.99
+    petes_produce: 1.79
+    unit: "lb"
+    
+  cucumber:
+    costco: 0.79
+    whole_foods: 1.29
+    petes_produce: 0.99
+    unit: "each"
+    
+  avocado:
+    costco: 1.29
+    whole_foods: 1.99
+    petes_produce: 1.49
+    unit: "each"
+    
+  brussels_sprouts:
+    costco: 3.99
+    whole_foods: 4.99
+    petes_produce: 3.49
+    unit: "lb"
+    
+  cauliflower:
+    costco: 3.49
+    whole_foods: 4.99
+    petes_produce: 2.99
+    unit: "head"
+    
+  cabbage:
+    costco: 0.99
+    whole_foods: 1.49
+    petes_produce: 0.79
+    unit: "head"
+    
+  plantains:
+    costco: null
+    whole_foods: 0.99
+    petes_produce: 0.69
+    unit: "each"
+
+grains_starches:
+  quinoa:
+    costco: 7.99  # per bag (2 lb)
+    whole_foods: 9.99
+    petes_produce: null
+    unit: "bag"
+    
+  brown_rice:
+    costco: 6.99
+    whole_foods: 8.99
+    petes_produce: null
+    unit: "bag"
+    
+  oats:
+    costco: 5.99
+    whole_foods: 7.99
+    petes_produce: null
+    unit: "container"
+    
+  whole_wheat_bread:
+    costco: 4.99
+    whole_foods: 5.99
+    petes_produce: null
+    unit: "loaf"
+    
+  whole_wheat_pita:
+    costco: 3.99
+    whole_foods: 4.99
+    petes_produce: null
+    unit: "pack"
+    
+  whole_wheat_wrap:
+    costco: 4.49
+    whole_foods: 5.49
+    petes_produce: null
+    unit: "pack"
+
+legumes:
+  black_beans:
+    costco: 1.29  # per can
+    whole_foods: 1.99
+    petes_produce: null
+    unit: "can"
+    
+  chickpeas:
+    costco: 1.29
+    whole_foods: 1.99
+    petes_produce: null
+    unit: "can"
+    
+  lentils:
+    costco: 3.99  # per bag (dried)
+    whole_foods: 4.99
+    petes_produce: null
+    unit: "bag"
+
+spices_seasonings:
+  berbere_spice:
+    costco: null
+    whole_foods: 6.99
+    petes_produce: null
+    unit: "container"
+    
+  za_atar:
+    costco: null
+    whole_foods: 5.99
+    petes_produce: null
+    unit: "container"
+    
+  jerk_seasoning:
+    costco: 4.99
+    whole_foods: 6.99
+    petes_produce: null
+    unit: "container"
+    
+  cajun_seasoning:
+    costco: 3.99
+    whole_foods: 5.99
+    petes_produce: null
+    unit: "container"
+    
+  cumin:
+    costco: 4.99
+    whole_foods: 5.99
+    petes_produce: null
+    unit: "container"
+    
+  turmeric:
+    costco: 5.99
+    whole_foods: 6.99
+    petes_produce: null
+    unit: "container"
+
+oils_condiments:
+  olive_oil:
+    costco: 14.99  # per bottle
+    whole_foods: 18.99
+    petes_produce: null
+    unit: "bottle"
+    
+  coconut_oil:
+    costco: 9.99
+    whole_foods: 12.99
+    petes_produce: null
+    unit: "jar"
+    
+  apple_cider_vinegar:
+    costco: 4.99
+    whole_foods: 6.99
+    petes_produce: null
+    unit: "bottle"
+    
+  coconut_aminos:
+    costco: null
+    whole_foods: 7.99
+    petes_produce: null
+    unit: "bottle"
+    
+  tahini:
+    costco: 6.99
+    whole_foods: 8.99
+    petes_produce: null
+    unit: "jar"
+    
+  almond_butter:
+    costco: 9.99
+    whole_foods: 12.99
+    petes_produce: null
+    unit: "jar"
+
+fruits:
+  blueberries:
+    costco: 5.99  # per container
+    whole_foods: 6.99
+    petes_produce: 4.99
+    unit: "container"
+    
+  strawberries:
+    costco: 4.99
+    whole_foods: 5.99
+    petes_produce: 3.99
+    unit: "container"
+    
+  bananas:
+    costco: 0.59  # per lb
+    whole_foods: 0.79
+    petes_produce: 0.49
+    unit: "lb"
+    
+  apples:
+    costco: 1.49
+    whole_foods: 1.99
+    petes_produce: 1.29
+    unit: "lb"
+    
+  lemons:
+    costco: 0.49
+    whole_foods: 0.79
+    petes_produce: 0.39
+    unit: "each"
+    
+  limes:
+    costco: 0.49
+    whole_foods: 0.79
+    petes_produce: 0.39
+    unit: "each"
+    
+  mango:
+    costco: 1.49
+    whole_foods: 1.99
+    petes_produce: 1.29
+    unit: "each"
+
+# Notes:
+# - null means item not available at that store
+# - Update prices monthly or as you notice changes
+# - Keep unit consistent (lb, each, bunch, container, etc.)
+# - Add new ingredients as you add new recipes

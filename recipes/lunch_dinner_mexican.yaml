@@ -1,0 +1,428 @@
+# Mexican-Inspired Clean Eating Recipes
+# Bold flavors with healthy modifications
+
+- name: "Chicken Tinga Lettuce Cups"
+  cuisine: "Mexican"
+  meal_type: lunch_or_dinner
+  servings: 2
+  prep_time: 10
+  cook_time: 25
+  
+  health_benefits:
+    - high_protein
+    - low_carb
+    - smoky_flavor
+  
+  ingredients:
+    - item: "chicken thighs"
+      amount: 8
+      unit: "oz"
+      prep: "shredded"
+    - item: "tomatoes"
+      amount: "1"
+      unit: "cup"
+      prep: "diced, canned with juice"
+    - item: "chipotle peppers in adobo"
+      amount: 1
+      unit: "pepper"
+      prep: "chopped"
+    - item: "onions"
+      amount: "1/2"
+      unit: "medium"
+      prep: "diced"
+    - item: "garlic"
+      amount: 3
+      unit: "cloves"
+    - item: "cumin"
+      amount: "1/2"
+      unit: "tsp"
+    - item: "oregano"
+      amount: "1/2"
+      unit: "tsp"
+    - item: "lettuce leaves"
+      amount: 8
+      unit: "leaves"
+      prep: "butter or romaine"
+    - item: "avocado"
+      amount: "1/2"
+      unit: "avocado"
+    - item: "cilantro"
+      amount: "1/4"
+      unit: "cup"
+    - item: "lime"
+      amount: 1
+      unit: "lime"
+  
+  instructions:
+    - "Sauté onions and garlic"
+    - "Add tomatoes, chipotle, cumin, oregano"
+    - "Add shredded chicken, simmer 20 minutes"
+    - "Spoon into lettuce cups"
+    - "Top with avocado, cilantro, lime squeeze"
+  
+  cultural_note: "Puebla-style smoky shredded chicken"
+  meal_prep_notes: "Tinga freezes perfectly, make double batch"
+
+- name: "Fish Tacos with Mango Salsa"
+  cuisine: "Mexican-Coastal"
+  meal_type: lunch_or_dinner
+  servings: 2
+  prep_time: 15
+  cook_time: 10
+  
+  health_benefits:
+    - omega_3
+    - fresh_vibrant
+    - anti_inflammatory
+  
+  ingredients:
+    fish:
+      - item: "white fish"
+        amount: 8
+        unit: "oz"
+        prep: "tilapia, mahi-mahi, or barramundi"
+      - item: "cumin"
+        amount: "1/2"
+        unit: "tsp"
+      - item: "chili powder"
+        amount: "1/2"
+        unit: "tsp"
+      - item: "lime"
+        amount: 1
+        unit: "lime"
+    salsa:
+      - item: "mango"
+        amount: 1
+        unit: "cup"
+        prep: "diced"
+      - item: "red onion"
+        amount: "1/4"
+        unit: "cup"
+        prep: "diced"
+      - item: "jalapeño"
+        amount: 1
+        unit: "pepper"
+        prep: "minced, seeds removed"
+      - item: "cilantro"
+        amount: "1/4"
+        unit: "cup"
+      - item: "lime juice"
+        amount: 2
+        unit: "tbsp"
+    serve:
+      - item: "lettuce leaves or small corn tortillas"
+        amount: 6
+        unit: "pieces"
+      - item: "cabbage"
+        amount: "1"
+        unit: "cup"
+        prep: "shredded"
+  
+  instructions:
+    - "Make salsa: combine mango, onion, jalapeño, cilantro, lime juice"
+    - "Season fish with cumin, chili powder, lime"
+    - "Grill or pan-sear 3-4 minutes per side"
+    - "Break into chunks"
+    - "Serve in lettuce cups or small tortillas with cabbage and mango salsa"
+  
+  cultural_note: "Baja-style tacos with tropical twist"
+  meal_prep_notes: "Make salsa ahead, cook fish fresh"
+
+- name: "Turkey Albondigas Soup (Mexican Meatball Soup)"
+  cuisine: "Mexican"
+  meal_type: lunch_or_dinner
+  servings: 4
+  prep_time: 15
+  cook_time: 30
+  
+  health_benefits:
+    - high_protein
+    - vegetable_rich
+    - comfort_food
+  
+  ingredients:
+    meatballs:
+      - item: "ground turkey"
+        amount: 12
+        unit: "oz"
+      - item: "egg"
+        amount: 1
+        unit: "whole"
+      - item: "almond flour"
+        amount: "2"
+        unit: "tbsp"
+      - item: "cilantro"
+        amount: "2"
+        unit: "tbsp"
+      - item: "cumin"
+        amount: "1/2"
+        unit: "tsp"
+    soup:
+      - item: "chicken broth"
+        amount: 6
+        unit: "cups"
+      - item: "tomatoes"
+        amount: "1"
+        unit: "cup"
+        prep: "diced"
+      - item: "zucchini"
+        amount: 1
+        unit: "medium"
+        prep: "diced"
+      - item: "carrots"
+        amount: 2
+        unit: "medium"
+        prep: "sliced"
+      - item: "celery"
+        amount: 2
+        unit: "stalks"
+      - item: "onion"
+        amount: 1
+        unit: "small"
+      - item: "garlic"
+        amount: 4
+        unit: "cloves"
+      - item: "cumin"
+        amount: 1
+        unit: "tsp"
+      - item: "oregano"
+        amount: 1
+        unit: "tsp"
+      - item: "lime"
+        amount: 2
+        unit: "limes"
+  
+  instructions:
+    - "Mix meatball ingredients, form small balls"
+    - "Bring broth to boil with vegetables and spices"
+    - "Drop in meatballs, reduce heat"
+    - "Simmer 25 minutes until meatballs cooked through"
+    - "Serve with lime wedges and cilantro"
+  
+  cultural_note: "Classic Mexican comfort soup"
+  meal_prep_notes: "Freezes beautifully, makes great batch meal"
+
+- name: "Chicken Fajita Bowl"
+  cuisine: "Tex-Mex"
+  meal_type: lunch_or_dinner
+  servings: 2
+  prep_time: 10
+  cook_time: 15
+  
+  health_benefits:
+    - high_protein
+    - colorful_vegetables
+    - satisfying
+  
+  ingredients:
+    - item: "chicken breast"
+      amount: 8
+      unit: "oz"
+      prep: "sliced"
+    - item: "bell peppers"
+      amount: 2
+      unit: "peppers"
+      prep: "mixed colors, sliced"
+    - item: "onions"
+      amount: 1
+      unit: "large"
+      prep: "sliced"
+    - item: "fajita seasoning"
+      amount: 2
+      unit: "tsp"
+      prep: "or make with cumin, chili powder, paprika, garlic powder"
+    - item: "lime"
+      amount: 2
+      unit: "limes"
+    - item: "cauliflower rice"
+      amount: "2"
+      unit: "cups"
+      prep: "or regular rice"
+    - item: "black beans"
+      amount: "1/2"
+      unit: "cup"
+      prep: "cooked"
+    - item: "avocado"
+      amount: "1/2"
+      unit: "avocado"
+    - item: "salsa"
+      amount: "1/4"
+      unit: "cup"
+    - item: "cilantro"
+      amount: "2"
+      unit: "tbsp"
+  
+  instructions:
+    - "Toss chicken with fajita seasoning and lime juice"
+    - "Sauté chicken in hot pan 6-8 minutes"
+    - "Remove, cook peppers and onions until charred"
+    - "Serve over cauliflower rice with black beans"
+    - "Top with avocado, salsa, cilantro"
+  
+  meal_prep_notes: "Prep all ingredients Sunday, quick assembly weeknight"
+
+- name: "Carnitas-Style Turkey with Cauliflower Rice"
+  cuisine: "Mexican"
+  meal_type: lunch_or_dinner
+  servings: 3
+  prep_time: 10
+  cook_time: "2.5 hours"
+  
+  health_benefits:
+    - high_protein
+    - tender_flavorful
+    - batch_friendly
+  
+  ingredients:
+    - item: "turkey thighs"
+      amount: 12
+      unit: "oz"
+      prep: "bone-in or boneless"
+    - item: "orange juice"
+      amount: "1/2"
+      unit: "cup"
+    - item: "lime juice"
+      amount: "1/4"
+      unit: "cup"
+    - item: "garlic"
+      amount: 6
+      unit: "cloves"
+    - item: "cumin"
+      amount: 1
+      unit: "tbsp"
+    - item: "oregano"
+      amount: 1
+      unit: "tsp"
+    - item: "bay leaves"
+      amount: 2
+      unit: "leaves"
+    - item: "cauliflower rice"
+      amount: 4
+      unit: "cups"
+    - item: "toppings"
+      amount: "varies"
+      unit: "varies"
+      prep: "cilantro, lime, onion, radish"
+  
+  instructions:
+    - "Place turkey in slow cooker or pot"
+    - "Add orange juice, lime juice, garlic, spices, bay leaves"
+    - "Slow cook on low 8 hours OR pressure cook 45 minutes"
+    - "Shred turkey, broil 5 minutes for crispy edges"
+    - "Serve over cauliflower rice with toppings"
+  
+  cultural_note: "Traditional carnitas technique with turkey instead"
+  meal_prep_notes: "Make huge batch, freeze portions for quick meals"
+
+- name: "Shrimp Ceviche Bowl"
+  cuisine: "Mexican-Coastal"
+  meal_type: lunch_or_dinner
+  servings: 2
+  prep_time: "15 + marinating"
+  cook_time: 3
+  
+  health_benefits:
+    - high_protein
+    - refreshing
+    - omega_3
+  
+  ingredients:
+    - item: "shrimp"
+      amount: 8
+      unit: "oz"
+      prep: "peeled, deveined, chopped"
+    - item: "lime juice"
+      amount: "1/2"
+      unit: "cup"
+      prep: "fresh"
+    - item: "tomatoes"
+      amount: "1"
+      unit: "cup"
+      prep: "diced"
+    - item: "cucumber"
+      amount: "1/2"
+      unit: "cup"
+      prep: "diced"
+    - item: "red onion"
+      amount: "1/4"
+      unit: "cup"
+      prep: "minced"
+    - item: "jalapeño"
+      amount: 1
+      unit: "pepper"
+      prep: "minced"
+    - item: "cilantro"
+      amount: "1/4"
+      unit: "cup"
+    - item: "avocado"
+      amount: 1
+      unit: "avocado"
+    - item: "mixed greens"
+      amount: "2"
+      unit: "cups"
+  
+  instructions:
+    - "Boil shrimp 2-3 minutes until just pink, chop"
+    - "Marinate in lime juice 30 minutes to 2 hours"
+    - "Mix with tomatoes, cucumber, onion, jalapeño, cilantro"
+    - "Serve over mixed greens with avocado"
+  
+  cultural_note: "Pacific coast classic"
+  meal_prep_notes: "Best made fresh, but can prep components ahead"
+
+- name: "Chicken Enchilada Stuffed Peppers"
+  cuisine: "Mexican-Fusion"
+  meal_type: lunch_or_dinner
+  servings: 4
+  prep_time: 15
+  cook_time: 35
+  
+  health_benefits:
+    - high_protein
+    - low_carb
+    - comfort_food
+  
+  ingredients:
+    - item: "bell peppers"
+      amount: 4
+      unit: "large"
+      prep: "halved, seeds removed"
+    - item: "chicken breast"
+      amount: 12
+      unit: "oz"
+      prep: "cooked and shredded"
+    - item: "black beans"
+      amount: "1"
+      unit: "cup"
+      prep: "cooked"
+    - item: "enchilada sauce"
+      amount: "1"
+      unit: "cup"
+      prep: "no added sugar"
+    - item: "onion"
+      amount: "1/2"
+      unit: "medium"
+      prep: "diced"
+    - item: "garlic"
+      amount: 3
+      unit: "cloves"
+    - item: "cumin"
+      amount: 1
+      unit: "tsp"
+    - item: "cilantro"
+      amount: "1/4"
+      unit: "cup"
+    - item: "lime"
+      amount: 2
+      unit: "limes"
+  
+  instructions:
+    - "Preheat oven to 375°F"
+    - "Mix shredded chicken, beans, half the enchilada sauce, onion, garlic, cumin"
+    - "Stuff pepper halves with mixture"
+    - "Place in baking dish, pour remaining sauce over top"
+    - "Cover with foil, bake 30 minutes"
+    - "Uncover, bake 5 more minutes"
+    - "Top with cilantro and lime"
+  
+  meal_prep_notes: "Assemble ahead, bake when ready to eat"
