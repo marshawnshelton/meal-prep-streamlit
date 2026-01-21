@@ -2,6 +2,7 @@
 """
 Meal Prep System - Web Interface
 Built with Streamlit for easy, user-friendly meal planning
+Now with Firebase Authentication!
 """
 
 import streamlit as st
@@ -17,6 +18,9 @@ from meal_planner import MealPlanner
 from shopping_list import ShoppingListGenerator
 from excel_export import ExcelExporter
 
+# Import authentication
+from auth import init_session_state, show_auth_page, logout, FirebaseAuth
+
 
 # Page configuration
 st.set_page_config(
@@ -25,7 +29,10 @@ st.set_page_config(
     layout="wide"
 )
 
-# Initialize session state
+# Initialize authentication
+init_session_state()
+
+# Initialize other session state
 if 'meal_plan' not in st.session_state:
     st.session_state.meal_plan = None
 if 'selected_meals' not in st.session_state:
@@ -38,8 +45,31 @@ if 'recipes' not in st.session_state:
 
 
 def main():
-    st.title("🍽️ Meal Prep System")
-    st.markdown("### Plan your meals, generate shopping lists, get recipes")
+    # Check if user is authenticated
+    if not st.session_state.authenticated:
+        show_auth_page()
+        return
+    
+    # User is authenticated - show main app
+    show_main_app()
+
+
+def show_main_app():
+    """Main application after authentication"""
+    
+    # Top bar with user info and logout
+    col1, col2 = st.columns([4, 1])
+    with col1:
+        st.title("🍽️ Meal Prep System")
+        st.markdown("### Plan your meals, generate shopping lists, get recipes")
+    with col2:
+        user_email = st.session_state.user['email']
+        st.write("")  # Spacing
+        st.caption(f"👤 {user_email.split('@')[0]}")
+        if st.button("🚪 Logout", use_container_width=True):
+            logout()
+    
+    st.markdown("---")
     
     # Sidebar for configuration
     with st.sidebar:
@@ -48,6 +78,16 @@ def main():
         # Load config
         with open('config.yaml', 'r') as f:
             config = yaml.safe_load(f)
+        
+        # Show user profile info
+        profile = st.session_state.user.get('profile', {})
+        if profile:
+            with st.expander("👤 Your Profile"):
+                st.caption(f"**Goal:** {profile.get('primary_goal', 'N/A')}")
+                st.caption(f"**Household:** {profile.get('household_size', 2)} people")
+                st.caption(f"**ZIP:** {profile.get('zipcode', 'N/A')}")
+        
+        st.markdown("---")
         
         people = st.number_input("Number of people", min_value=1, max_value=10, 
                                 value=config['system']['people'])
@@ -84,7 +124,18 @@ def main():
                 planner = st.session_state.planner
                 meal_plan = planner.generate_meal_plan(start_date)
                 st.session_state.meal_plan = meal_plan
-                st.success(f"✓ Generated {days}-day meal plan!")
+                
+                # Save to Firebase
+                auth = FirebaseAuth()
+                user_id = st.session_state.user['user_id']
+                id_token = st.session_state.user['id_token']
+                
+                if auth.save_meal_plan(user_id, id_token, meal_plan):
+                    st.success(f"✓ Generated {days}-day meal plan and saved to your account!")
+                else:
+                    st.success(f"✓ Generated {days}-day meal plan!")
+                    st.warning("Note: Plan saved locally but cloud sync failed")
+                
                 st.rerun()
     
     # TAB 2: Custom Select
@@ -129,7 +180,7 @@ def main():
                     breakfast_options = [f"{r['name']} ({r.get('cuisine', 'N/A')})" for r in all_breakfasts]
                     breakfast_selection = st.selectbox("Select breakfast", breakfast_options, 
                                             key=f"breakfast_{current_day}")
-                    breakfast = breakfast_selection.split(' (')[0]  # Extract just the name
+                    breakfast = breakfast_selection.split(' (')[0]
                     
                     # Morning Snack
                     st.markdown("**🥜 Morning Snack**")
@@ -170,7 +221,6 @@ def main():
                 
                 with col2:
                     if st.button("Save Day"):
-                        # Save selections
                         st.session_state.selected_meals[current_day] = {
                             'breakfast': breakfast,
                             'snack_am': snack_am if snack_am != "Skip" else None,
@@ -183,7 +233,6 @@ def main():
                 
                 with col3:
                     if st.button("Next Day →"):
-                        # Save and move to next
                         st.session_state.selected_meals[current_day] = {
                             'breakfast': breakfast,
                             'snack_am': snack_am if snack_am != "Skip" else None,
@@ -198,8 +247,6 @@ def main():
             else:
                 st.success("🎉 All days planned!")
                 if st.button("Generate Shopping List & Recipes"):
-                    # Build meal plan from selections
-                    # TODO: Convert selections to meal_plan format
                     st.info("Converting to meal plan format...")
     
     # TAB 3: Browse Recipes
@@ -272,15 +319,14 @@ def main():
                 st.markdown("**Ingredients:**")
                 ingredients = recipe.get('ingredients', [])
                 
-                # Handle nested ingredient structures (like Mexican recipes)
                 if isinstance(ingredients, dict):
                     for section, ing_list in ingredients.items():
                         st.markdown(f"*{section.title()}:*")
-                        for ing in ing_list[:5]:  # Show first 5
+                        for ing in ing_list[:5]:
                             if isinstance(ing, dict):
                                 st.markdown(f"- {ing.get('amount', '')} {ing.get('unit', '')} {ing.get('item', '')}")
                 else:
-                    for ing in ingredients[:5]:  # Show first 5
+                    for ing in ingredients[:5]:
                         if isinstance(ing, dict):
                             st.markdown(f"- {ing.get('amount', '')} {ing.get('unit', '')} {ing.get('item', '')}")
                 
@@ -336,10 +382,8 @@ def main():
                         generator = ShoppingListGenerator()
                         shopping_list = generator.generate_shopping_list(meal_plan)
                         
-                        # Save to session state
                         st.session_state.shopping_list = shopping_list
                         
-                        # Show summary
                         st.success("✓ Shopping list generated!")
                         total_items = sum(len(store['items']) for store in shopping_list['stores'].values())
                         st.info(f"Total items: {total_items} across {len(shopping_list['stores'])} stores")
@@ -348,23 +392,19 @@ def main():
                 if st.button("📖 Generate Recipe Booklet", use_container_width=True):
                     if st.session_state.meal_plan:
                         with st.spinner("Creating recipe booklet..."):
-                            # Get all unique recipes from the meal plan
                             unique_recipes = set()
                             for day in st.session_state.meal_plan['days']:
                                 for meal_type, meal_info in day.get('meals', {}).items():
                                     if meal_info and meal_info.get('recipe'):
                                         unique_recipes.add(meal_info['recipe'])
                             
-                            # Create a simple text booklet
                             booklet_content = f"# Recipe Booklet\n"
                             booklet_content += f"## Meal Plan: {st.session_state.meal_plan['start_date']} to {st.session_state.meal_plan['end_date']}\n\n"
                             booklet_content += f"### {len(unique_recipes)} Recipes\n\n"
                             booklet_content += "---\n\n"
                             
-                            # Get recipe details
                             planner = st.session_state.planner
                             for recipe_name in sorted(unique_recipes):
-                                # Find recipe in all categories
                                 recipe = None
                                 for category, recipes in planner.recipes.items():
                                     for r in recipes:
@@ -411,7 +451,6 @@ def main():
                                     
                                     booklet_content += "\n---\n\n"
                             
-                            # Provide download button
                             st.download_button(
                                 label="⬇️ Download Recipe Booklet",
                                 data=booklet_content,
@@ -433,7 +472,6 @@ def main():
                             )
                             st.success(f"✓ Excel created: {excel_file}")
                             
-                            # Provide download link
                             with open(excel_file, 'rb') as f:
                                 st.download_button(
                                     label="⬇️ Download Excel",
