@@ -65,6 +65,36 @@ class ShoppingListGenerator:
         # Default to Costco if not found (bulk buying)
         return 'costco'
     
+    def _convert_units(self, amount: float, unit: str) -> tuple:
+        """Convert units to human-readable format"""
+        
+        # Teaspoon conversions
+        if unit in ['tsp', 'teaspoon', 'teaspoons']:
+            if amount >= 48:  # 1 cup = 48 tsp
+                cups = amount / 48
+                return (round(cups, 1), 'cup' if cups == 1 else 'cups')
+            elif amount >= 3:  # 1 tbsp = 3 tsp
+                tbsp = amount / 3
+                return (round(tbsp, 1), 'tbsp')
+        
+        # Tablespoon conversions
+        elif unit in ['tbsp', 'tablespoon', 'tablespoons']:
+            if amount >= 16:  # 1 cup = 16 tbsp
+                cups = amount / 16
+                return (round(cups, 1), 'cup' if cups == 1 else 'cups')
+        
+        # Ounce conversions
+        elif unit in ['oz', 'ounce', 'ounces']:
+            if amount >= 16:  # 1 lb = 16 oz
+                lbs = amount / 16
+                return (round(lbs, 1), 'lb' if lbs == 1 else 'lbs')
+        
+        # Round the original amount
+        if amount < 1:
+            return (round(amount, 2), unit)
+        else:
+            return (round(amount, 1), unit)
+    
     def _aggregate_ingredients(self, meal_plan: Dict) -> Dict[str, Dict]:
         """Aggregate ingredients from all meals in plan"""
         ingredient_totals = defaultdict(lambda: {
@@ -107,8 +137,37 @@ class ShoppingListGenerator:
                     amount = ing.get('amount', 0)
                     unit = ing.get('unit', '')
                     
-                    # Skip optional or varies amounts
-                    if amount in ['varies', 'optional', '']:
+                    # Skip non-numeric amounts entirely
+                    if isinstance(amount, str):
+                        # List of non-numeric values to skip
+                        skip_values = [
+                            'varies', 'optional', '', 'to taste', 'as needed',
+                            'pinch', 'dash', 'handful', 'sprinkle', 'as desired'
+                        ]
+                        if amount.lower() in skip_values:
+                            continue
+                        
+                        # Handle fractions better
+                        if '/' in amount:
+                            try:
+                                # Split fraction and convert
+                                if ' ' in amount:  # Handle "1 1/2" format
+                                    whole, frac = amount.split(' ', 1)
+                                    num, denom = frac.split('/')
+                                    amount = float(whole) + (float(num) / float(denom))
+                                else:  # Handle "1/2" format
+                                    num, denom = amount.split('/')
+                                    amount = float(num) / float(denom)
+                            except:
+                                continue  # Skip if can't parse fraction
+                        else:
+                            try:
+                                amount = float(amount)
+                            except ValueError:
+                                continue  # Skip if not a number
+                    
+                    # After parsing, skip if amount is negligible
+                    if isinstance(amount, (int, float)) and amount < 0.1:
                         continue
                     
                     # Scale by servings if this is for multiple people
@@ -123,16 +182,6 @@ class ShoppingListGenerator:
                             # Try to multiply numeric amounts
                             if isinstance(amount, (int, float)):
                                 amount = amount * servings_int
-                            elif isinstance(amount, str):
-                                # Handle fractions
-                                if '/' in amount:
-                                    parts = amount.split('/')
-                                    amount = (float(parts[0]) / float(parts[1])) * servings_int
-                                else:
-                                    try:
-                                        amount = float(amount) * servings_int
-                                    except ValueError:
-                                        pass
                         except:
                             pass
                     
@@ -167,16 +216,19 @@ class ShoppingListGenerator:
                 'best_for': store_info.get('best_for', [])
             }
             
-            # Format amount
+            # Format amount with unit conversion
             amount = ing_data['amount']
+            unit = ing_data['unit']
+            
+            # Convert to better units
+            amount, unit = self._convert_units(amount, unit)
+            
+            # Format the amount
             if isinstance(amount, float):
-                # Round to reasonable precision
                 if amount < 1:
                     amount = f"{amount:.2f}"
                 else:
                     amount = f"{amount:.1f}"
-            
-            unit = ing_data['unit']
             
             shopping_by_store[store]['items'].append({
                 'item': item_name,

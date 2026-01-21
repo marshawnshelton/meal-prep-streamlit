@@ -346,9 +346,81 @@ def main():
             
             with col2:
                 if st.button("📖 Generate Recipe Booklet", use_container_width=True):
-                    with st.spinner("Creating recipe booklet..."):
-                        # TODO: Generate recipe booklet
-                        st.success("✓ Recipe booklet generated!")
+                    if st.session_state.meal_plan:
+                        with st.spinner("Creating recipe booklet..."):
+                            # Get all unique recipes from the meal plan
+                            unique_recipes = set()
+                            for day in st.session_state.meal_plan['days']:
+                                for meal_type, meal_info in day.get('meals', {}).items():
+                                    if meal_info and meal_info.get('recipe'):
+                                        unique_recipes.add(meal_info['recipe'])
+                            
+                            # Create a simple text booklet
+                            booklet_content = f"# Recipe Booklet\n"
+                            booklet_content += f"## Meal Plan: {st.session_state.meal_plan['start_date']} to {st.session_state.meal_plan['end_date']}\n\n"
+                            booklet_content += f"### {len(unique_recipes)} Recipes\n\n"
+                            booklet_content += "---\n\n"
+                            
+                            # Get recipe details
+                            planner = st.session_state.planner
+                            for recipe_name in sorted(unique_recipes):
+                                # Find recipe in all categories
+                                recipe = None
+                                for category, recipes in planner.recipes.items():
+                                    for r in recipes:
+                                        if r['name'] == recipe_name:
+                                            recipe = r
+                                            break
+                                    if recipe:
+                                        break
+                                
+                                if recipe:
+                                    booklet_content += f"## {recipe['name']}\n\n"
+                                    booklet_content += f"**Cuisine:** {recipe.get('cuisine', 'N/A')}  \n"
+                                    booklet_content += f"**Servings:** {recipe.get('servings', 'N/A')}  \n"
+                                    booklet_content += f"**Prep Time:** {recipe.get('prep_time', 'N/A')} min  \n"
+                                    booklet_content += f"**Cook Time:** {recipe.get('cook_time', 'N/A')} min\n\n"
+                                    
+                                    booklet_content += "### Ingredients:\n\n"
+                                    ingredients = recipe.get('ingredients', [])
+                                    if isinstance(ingredients, dict):
+                                        for section, ing_list in ingredients.items():
+                                            booklet_content += f"**{section.title()}:**\n\n"
+                                            for ing in ing_list:
+                                                if isinstance(ing, dict):
+                                                    booklet_content += f"- {ing.get('amount', '')} {ing.get('unit', '')} {ing.get('item', '')}"
+                                                    if ing.get('prep'):
+                                                        booklet_content += f" ({ing.get('prep')})"
+                                                    booklet_content += "\n"
+                                            booklet_content += "\n"
+                                    else:
+                                        for ing in ingredients:
+                                            if isinstance(ing, dict):
+                                                booklet_content += f"- {ing.get('amount', '')} {ing.get('unit', '')} {ing.get('item', '')}"
+                                                if ing.get('prep'):
+                                                    booklet_content += f" ({ing.get('prep')})"
+                                                booklet_content += "\n"
+                                    
+                                    booklet_content += "\n### Instructions:\n\n"
+                                    instructions = recipe.get('instructions', [])
+                                    for i, step in enumerate(instructions, 1):
+                                        booklet_content += f"{i}. {step}\n"
+                                    
+                                    if recipe.get('cultural_note'):
+                                        booklet_content += f"\n*{recipe.get('cultural_note')}*\n"
+                                    
+                                    booklet_content += "\n---\n\n"
+                            
+                            # Provide download button
+                            st.download_button(
+                                label="⬇️ Download Recipe Booklet",
+                                data=booklet_content,
+                                file_name=f"recipe_booklet_{datetime.now().strftime('%Y%m%d')}.md",
+                                mime="text/markdown"
+                            )
+                            st.success(f"✓ Recipe booklet ready! {len(unique_recipes)} recipes included")
+                    else:
+                        st.warning("Generate a meal plan first!")
             
             with col3:
                 if st.button("📊 Create Excel File", use_container_width=True):
