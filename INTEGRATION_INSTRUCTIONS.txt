@@ -1,0 +1,92 @@
+# INTEGRATION INSTRUCTIONS FOR app.py
+# Follow these steps to add shopping checklist and recipe booklet
+
+## STEP 1: Add imports at the top of app.py
+
+# Add these after the existing imports:
+from shopping_checklist import display_shopping_with_checklist
+from recipe_booklet import display_recipe_booklet_with_pdf
+from auth import FirebaseAuth
+
+
+## STEP 2: Replace the "View Results" tab (tab4) content
+
+# Find this section in your app.py (around line 400+):
+# with tab4:
+#     if st.session_state.meal_plan is None:
+#         st.info("Generate a meal plan first to see results here")
+#     else:
+#         ...
+
+# Replace the ENTIRE tab4 content with this:
+
+with tab4:
+    if st.session_state.meal_plan is None:
+        st.info("Generate a meal plan first to see results here")
+    else:
+        meal_plan = st.session_state.meal_plan
+        
+        # Sub-tabs for different views
+        subtab1, subtab2, subtab3 = st.tabs(["📅 Meal Plan", "🛒 Shopping List", "📖 Recipes"])
+        
+        # SUBTAB 1: Meal Plan View
+        with subtab1:
+            st.header("📅 Your Meal Plan")
+            
+            for day in meal_plan['days']:
+                with st.expander(f"**Day {day['day']} - {day['day_name']}, {day['date']}**"):
+                    for meal_type, meal_info in day['meals'].items():
+                        meal_name = meal_type.replace('_', ' ').title()
+                        recipe_name = meal_info['recipe']
+                        cuisine = meal_info.get('cuisine', '')
+                        timing = meal_info.get('time', '')
+                        
+                        if timing:
+                            st.markdown(f"**{meal_name}** ({timing})")
+                        else:
+                            st.markdown(f"**{meal_name}**")
+                        
+                        st.markdown(f"→ {recipe_name}")
+                        if cuisine:
+                            st.caption(f"Cuisine: {cuisine}")
+                        st.markdown("")
+        
+        # SUBTAB 2: Shopping List with Checklist
+        with subtab2:
+            # Generate shopping list if not already done
+            if 'shopping_list' not in st.session_state:
+                with st.spinner("Generating shopping list..."):
+                    from shopping_list import ShoppingListGenerator
+                    generator = ShoppingListGenerator()
+                    shopping_list = generator.generate_shopping_list(meal_plan)
+                    st.session_state.shopping_list = shopping_list
+            
+            # Display interactive checklist
+            auth = FirebaseAuth()
+            display_shopping_with_checklist(st.session_state.shopping_list, auth)
+        
+        # SUBTAB 3: Recipe Booklet
+        with subtab3:
+            auth = FirebaseAuth()
+            display_recipe_booklet_with_pdf(meal_plan, st.session_state.planner, auth)
+
+
+## STEP 3: Remove old download buttons
+
+# Delete or comment out the old section with these buttons:
+# - "📋 Generate Shopping List"
+# - "📖 Generate Recipe Booklet"  
+# - "📊 Create Excel File"
+
+# They're no longer needed since everything is now in the subtabs!
+
+
+## STEP 4: Optional - Remove old shopping list preview
+
+# At the bottom of tab4, delete the section that starts with:
+# if 'shopping_list' in st.session_state:
+#     st.markdown("---")
+#     st.header("🛒 Shopping List Preview")
+#     ...
+
+# This is replaced by the interactive checklist in subtab2!
