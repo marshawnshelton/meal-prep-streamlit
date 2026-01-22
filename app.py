@@ -367,6 +367,27 @@ if 'recipes' not in st.session_state:
     st.session_state.recipes = planner.recipes
     st.session_state.planner = planner
 
+# Load user's last meal plan if authenticated
+if 'meal_plan_loaded' not in st.session_state:
+    st.session_state.meal_plan_loaded = False
+
+if st.session_state.authenticated and not st.session_state.meal_plan_loaded:
+    try:
+        auth = FirebaseAuth()
+        user_id = st.session_state.user['user_id']
+        id_token = st.session_state.user['id_token']
+        
+        # Get most recent meal plan
+        meal_plans = auth.get_meal_plans(user_id, id_token)
+        if meal_plans and len(meal_plans) > 0:
+            # Load most recent plan
+            latest_plan = meal_plans[0]
+            st.session_state.meal_plan = latest_plan
+        
+        st.session_state.meal_plan_loaded = True
+    except:
+        st.session_state.meal_plan_loaded = True  # Mark as attempted even if failed
+
 
 def main():
     if not st.session_state.authenticated:
@@ -440,6 +461,7 @@ def show_main_app():
                 planner = st.session_state.planner
                 meal_plan = planner.generate_meal_plan(start_date)
                 st.session_state.meal_plan = meal_plan
+                st.session_state.just_generated = True  # Mark as freshly generated
                 
                 auth = FirebaseAuth()
                 user_id = st.session_state.user['user_id']
@@ -492,6 +514,10 @@ def show_main_app():
             st.info("Generate a meal plan first to see results here")
         else:
             meal_plan = st.session_state.meal_plan
+            
+            # Show if this is a loaded plan
+            if st.session_state.get('meal_plan_loaded') and not st.session_state.get('just_generated'):
+                st.info(f"📋 Loaded your saved meal plan from {meal_plan.get('start_date', 'recently')}")
             
             subtab1, subtab2, subtab3 = st.tabs(["📅 Meal Plan", "🛒 Shopping List", "📖 Recipes"])
             
