@@ -20,6 +20,7 @@ from excel_export import ExcelExporter
 
 # Import authentication
 from auth import init_session_state, show_auth_page, logout, FirebaseAuth
+from store_manager import StoreManager, show_admin_panel, show_store_selector
 
 
 # Inline helper functions (avoiding import issues)
@@ -400,6 +401,16 @@ def main():
 def show_main_app():
     """Main application after authentication"""
     
+    # Check if admin panel should be shown
+    if st.session_state.get('show_admin', False):
+        show_admin_panel(st.session_state.user['email'])
+        
+        if st.button("← Back to App"):
+            st.session_state.show_admin = False
+            st.rerun()
+        
+        return  # Don't show main app while in admin
+    
     # Top bar
     col1, col2 = st.columns([4, 1])
     with col1:
@@ -448,6 +459,13 @@ def show_main_app():
         for category, recipe_list in st.session_state.recipes.items():
             category_name = category.replace('_', ' ').title()
             st.caption(f"{category_name}: {len(recipe_list)}")
+        
+        # Admin panel access (if admin user)
+        ADMIN_EMAILS = ['marshawnshelton3@gmail.com', 'marshawn.shelton@isosalus.com']
+        if user_email in ADMIN_EMAILS:
+            st.markdown("---")
+            if st.button("🔧 Store Admin", use_container_width=True):
+                st.session_state.show_admin = True
     
     # Main tabs
     tab1, tab2, tab3, tab4 = st.tabs(["🎲 Auto Generate", "✋ Custom Select", "📖 Browse Recipes", "📊 View Results"])
@@ -456,24 +474,49 @@ def show_main_app():
         st.header("Automatic Meal Planning")
         st.markdown("Let the system create a diverse meal plan for you")
         
-        if st.button("🎲 Generate Random Plan", type="primary", use_container_width=True):
-            with st.spinner("Generating your meal plan..."):
-                planner = st.session_state.planner
-                meal_plan = planner.generate_meal_plan(start_date)
-                st.session_state.meal_plan = meal_plan
-                st.session_state.just_generated = True  # Mark as freshly generated
-                
-                auth = FirebaseAuth()
-                user_id = st.session_state.user['user_id']
-                id_token = st.session_state.user['id_token']
-                
-                if auth.save_meal_plan(user_id, id_token, meal_plan):
-                    st.success(f"✓ Generated {days}-day meal plan and saved to your account!")
-                else:
-                    st.success(f"✓ Generated {days}-day meal plan!")
-                    st.warning("Note: Plan saved locally but cloud sync failed")
-                
-                st.rerun()
+        # Step 1: Store Selection
+        if 'stores_selected' not in st.session_state:
+            st.session_state.stores_selected = False
+        
+        if not st.session_state.stores_selected:
+            st.markdown("### Step 1: Choose Your Stores")
+            selected_stores = show_store_selector()
+            
+            if selected_stores:
+                if st.button("Continue to Meal Planning →", type="primary", use_container_width=True):
+                    st.session_state.stores_selected = True
+                    st.session_state.selected_stores = selected_stores
+                    st.rerun()
+        else:
+            # Show selected stores
+            st.success(f"✓ Shopping at: {', '.join([s.replace('_', ' ').title() for s in st.session_state.selected_stores])}")
+            
+            col1, col2 = st.columns([3, 1])
+            with col1:
+                st.markdown("### Step 2: Generate Meal Plan")
+            with col2:
+                if st.button("← Change Stores"):
+                    st.session_state.stores_selected = False
+                    st.rerun()
+            
+            if st.button("🎲 Generate Random Plan", type="primary", use_container_width=True):
+                with st.spinner("Generating your meal plan..."):
+                    planner = st.session_state.planner
+                    meal_plan = planner.generate_meal_plan(start_date)
+                    st.session_state.meal_plan = meal_plan
+                    st.session_state.just_generated = True  # Mark as freshly generated
+                    
+                    auth = FirebaseAuth()
+                    user_id = st.session_state.user['user_id']
+                    id_token = st.session_state.user['id_token']
+                    
+                    if auth.save_meal_plan(user_id, id_token, meal_plan):
+                        st.success(f"✓ Generated {days}-day meal plan and saved to your account!")
+                    else:
+                        st.success(f"✓ Generated {days}-day meal plan!")
+                        st.warning("Note: Plan saved locally but cloud sync failed")
+                    
+                    st.rerun()
     
     with tab2:
         st.header("Custom Meal Selection")
