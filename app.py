@@ -21,6 +21,7 @@ from excel_export import ExcelExporter
 # Import authentication
 from auth import init_session_state, show_auth_page, logout, FirebaseAuth
 from store_manager import StoreManager, show_admin_panel, show_store_selector
+from store_router import apply_smart_routing
 
 
 # Inline helper functions (avoiding import issues)
@@ -497,10 +498,19 @@ def show_main_app():
             with col2:
                 if st.button("← Change Stores"):
                     st.session_state.stores_selected = False
+                    # CRITICAL: Clear shopping list when stores change
+                    if 'shopping_list' in st.session_state:
+                        del st.session_state.shopping_list
+                    if 'last_selected_stores' in st.session_state:
+                        del st.session_state.last_selected_stores
                     st.rerun()
             
             if st.button("🎲 Generate Random Plan", type="primary", use_container_width=True):
                 with st.spinner("Generating your meal plan..."):
+                    # Clear old shopping list
+                    if 'shopping_list' in st.session_state:
+                        del st.session_state.shopping_list
+                    
                     planner = st.session_state.planner
                     meal_plan = planner.generate_meal_plan(start_date)
                     st.session_state.meal_plan = meal_plan
@@ -586,10 +596,41 @@ def show_main_app():
                             st.markdown("")
             
             with subtab2:
+                # Add refresh button at top for debugging
+                col1, col2 = st.columns([5, 1])
+                with col1:
+                    st.markdown("")  # Spacer
+                with col2:
+                    if st.button("🔄 Refresh", key="refresh_shopping"):
+                        if 'shopping_list' in st.session_state:
+                            del st.session_state.shopping_list
+                        st.rerun()
+                
+                # Clear shopping list if stores changed
+                if 'last_selected_stores' not in st.session_state:
+                    st.session_state.last_selected_stores = []
+                
+                current_stores = st.session_state.get('selected_stores', [])
+                if current_stores != st.session_state.last_selected_stores:
+                    # Stores changed, regenerate shopping list
+                    if 'shopping_list' in st.session_state:
+                        del st.session_state.shopping_list
+                    st.session_state.last_selected_stores = current_stores
+                
                 if 'shopping_list' not in st.session_state:
                     with st.spinner("Generating shopping list..."):
                         generator = ShoppingListGenerator()
                         shopping_list = generator.generate_shopping_list(meal_plan)
+                        
+                        # Apply smart routing if stores were selected
+                        if st.session_state.get('selected_stores'):
+                            st.info(f"🔄 Routing to: {', '.join([s.replace('_', ' ').title() for s in st.session_state.selected_stores])}")
+                            shopping_list = apply_smart_routing(
+                                shopping_list, 
+                                st.session_state.selected_stores
+                            )
+                            st.success("✨ Smart routing applied - check terminal for details!")
+                        
                         st.session_state.shopping_list = shopping_list
                 
                 auth = FirebaseAuth()
