@@ -8,6 +8,7 @@ import yaml
 from pathlib import Path
 from typing import Dict, List, Any
 from collections import defaultdict
+from ingredient_cleaner import IngredientCleaner
 
 
 class ShoppingListGenerator:
@@ -17,6 +18,7 @@ class ShoppingListGenerator:
         self.recipes = self._load_all_recipes()
         self.store_map = self._load_store_map()
         self.people = self.config['system']['people']
+        self.cleaner = IngredientCleaner()  # Add cleaner
         
     def _load_config(self, config_path: str) -> Dict:
         """Load system configuration"""
@@ -230,12 +232,18 @@ class ShoppingListGenerator:
                 else:
                     amount = f"{amount:.1f}"
             
-            shopping_by_store[store]['items'].append({
+            # Create raw item dict
+            raw_item = {
                 'item': item_name,
                 'amount': amount,
                 'unit': unit,
                 'used_in': list(ing_data['recipes'])[:3]  # Show first 3 recipes
-            })
+            }
+            
+            # Clean the item using IngredientCleaner
+            cleaned_item = self.cleaner.clean_shopping_list_item(raw_item)
+            
+            shopping_by_store[store]['items'].append(cleaned_item)
         
         # Create final shopping list structure
         shopping_list = {

@@ -22,9 +22,38 @@ from excel_export import ExcelExporter
 from auth import init_session_state, show_auth_page, logout, FirebaseAuth
 from store_manager import StoreManager, show_admin_panel, show_store_selector
 from store_router import apply_smart_routing
+from plan_history import show_plan_selector, show_active_plan_indicator
 
 
 # Inline helper functions (avoiding import issues)
+def _update_checkbox(item_id):
+    """Update checkbox state without blocking UI"""
+    # Update in session state immediately
+    st.session_state.checklist_state[item_id] = st.session_state[item_id]
+    
+    # Save to Firebase in background (non-blocking)
+    import threading
+    def save_async():
+        try:
+            from firebase_config import FIRESTORE_URL
+            user_id = st.session_state.user['user_id']
+            id_token = st.session_state.user['id_token']
+            
+            url = f"{FIRESTORE_URL}/users/{user_id}/checklist/current"
+            headers = {"Authorization": f"Bearer {id_token}"}
+            fields = {
+                "state": {"stringValue": json.dumps(st.session_state.checklist_state)},
+                "updated_at": {"timestampValue": datetime.now().isoformat() + "Z"}
+            }
+            requests.patch(url, json={"fields": fields}, headers=headers, timeout=1)
+        except:
+            pass
+    
+    # Run in background thread
+    thread = threading.Thread(target=save_async, daemon=True)
+    thread.start()
+
+
 def display_shopping_with_checklist(shopping_list, auth):
     """Display shopping list with Firebase-synced checkboxes"""
     import json
@@ -59,9 +88,17 @@ def display_shopping_with_checklist(shopping_list, auth):
     
     checklist_state = st.session_state.checklist_state
     
-    # Stats
+    # Stats - only count checkboxes for items in CURRENT shopping list
     total_items = sum(len(store['items']) for store in shopping_list['stores'].values())
-    checked_items = sum(1 for v in checklist_state.values() if v)
+    
+    # Count only items that exist in current list AND are checked
+    checked_items = 0
+    for store_name, store_data in shopping_list['stores'].items():
+        for idx in range(len(store_data['items'])):
+            item_id = f"{store_name}_{idx}"
+            if checklist_state.get(item_id, False) is True:
+                checked_items += 1
+    
     progress = checked_items / total_items if total_items > 0 else 0
     
     # Progress bar
@@ -160,27 +197,10 @@ def display_shopping_with_checklist(shopping_list, auth):
                 col1, col2 = st.columns([1, 5])
                 
                 with col1:
-                    # Get current state BEFORE checkbox renders to prevent lag
-                    current_state = checklist_state.get(item_id, False)
-                    checked = st.checkbox("✓", value=current_state,
-                                        key=item_id, label_visibility="collapsed")
-                    
-                    # Only update if actually changed
-                    if checked != current_state:
-                        checklist_state[item_id] = checked
-                        st.session_state.checklist_state = checklist_state
-                        
-                        # Async save to Firebase
-                        try:
-                            url = f"{FIRESTORE_URL}/users/{user_id}/checklist/current"
-                            headers = {"Authorization": f"Bearer {id_token}"}
-                            fields = {
-                                "state": {"stringValue": json.dumps(checklist_state)},
-                                "updated_at": {"timestampValue": datetime.now().isoformat() + "Z"}
-                            }
-                            requests.patch(url, json={"fields": fields}, headers=headers, timeout=2)
-                        except:
-                            pass  # Silent fail
+                    # Simplified checkbox - direct binding to session state
+                    checked = st.checkbox("✓", value=checklist_state.get(item_id, False),
+                                        key=item_id, label_visibility="collapsed",
+                                        on_change=lambda iid=item_id: _update_checkbox(iid))
                 
                 with col2:
                     if checklist_state.get(item_id, False):
@@ -412,6 +432,17 @@ def show_main_app():
         
         return  # Don't show main app while in admin
     
+    # Check if recipe admin should be shown
+    if st.session_state.get('show_recipe_admin', False):
+        from recipe_manager import show_recipe_admin
+        show_recipe_admin()
+        
+        if st.button("← Back to App"):
+            st.session_state.show_recipe_admin = False
+            st.rerun()
+        
+        return  # Don't show main app while in recipe admin
+    
     # Top bar
     col1, col2 = st.columns([4, 1])
     with col1:
@@ -467,66 +498,19 @@ def show_main_app():
             st.markdown("---")
             if st.button("🔧 Store Admin", use_container_width=True):
                 st.session_state.show_admin = True
+            if st.button("🍳 Recipe Admin", use_container_width=True):
+                st.session_state.show_recipe_admin = True
+    
+    # Show which plan is currently active
+    if 'meal_plan' in st.session_state:
+        show_active_plan_indicator()
     
     # Main tabs
-    tab1, tab2, tab3, tab4 = st.tabs(["🎲 Auto Generate", "✋ Custom Select", "📖 Browse Recipes", "📊 View Results"])
+    tab1, tab2, tab3, tab4 = st.tabs(["📅 Plans", "✋ Custom Select", "📖 Browse Recipes", "📊 View Results"])
     
     with tab1:
-        st.header("Automatic Meal Planning")
-        st.markdown("Let the system create a diverse meal plan for you")
-        
-        # Step 1: Store Selection
-        if 'stores_selected' not in st.session_state:
-            st.session_state.stores_selected = False
-        
-        if not st.session_state.stores_selected:
-            st.markdown("### Step 1: Choose Your Stores")
-            selected_stores = show_store_selector()
-            
-            if selected_stores:
-                if st.button("Continue to Meal Planning →", type="primary", use_container_width=True):
-                    st.session_state.stores_selected = True
-                    st.session_state.selected_stores = selected_stores
-                    st.rerun()
-        else:
-            # Show selected stores
-            st.success(f"✓ Shopping at: {', '.join([s.replace('_', ' ').title() for s in st.session_state.selected_stores])}")
-            
-            col1, col2 = st.columns([3, 1])
-            with col1:
-                st.markdown("### Step 2: Generate Meal Plan")
-            with col2:
-                if st.button("← Change Stores"):
-                    st.session_state.stores_selected = False
-                    # CRITICAL: Clear shopping list when stores change
-                    if 'shopping_list' in st.session_state:
-                        del st.session_state.shopping_list
-                    if 'last_selected_stores' in st.session_state:
-                        del st.session_state.last_selected_stores
-                    st.rerun()
-            
-            if st.button("🎲 Generate Random Plan", type="primary", use_container_width=True):
-                with st.spinner("Generating your meal plan..."):
-                    # Clear old shopping list
-                    if 'shopping_list' in st.session_state:
-                        del st.session_state.shopping_list
-                    
-                    planner = st.session_state.planner
-                    meal_plan = planner.generate_meal_plan(start_date)
-                    st.session_state.meal_plan = meal_plan
-                    st.session_state.just_generated = True  # Mark as freshly generated
-                    
-                    auth = FirebaseAuth()
-                    user_id = st.session_state.user['user_id']
-                    id_token = st.session_state.user['id_token']
-                    
-                    if auth.save_meal_plan(user_id, id_token, meal_plan):
-                        st.success(f"✓ Generated {days}-day meal plan and saved to your account!")
-                    else:
-                        st.success(f"✓ Generated {days}-day meal plan!")
-                        st.warning("Note: Plan saved locally but cloud sync failed")
-                    
-                    st.rerun()
+        st.header("Meal Plan Selection")
+        show_plan_selector()
     
     with tab2:
         st.header("Custom Meal Selection")
@@ -602,8 +586,18 @@ def show_main_app():
                     st.markdown("")  # Spacer
                 with col2:
                     if st.button("🔄 Refresh", key="refresh_shopping"):
+                        # Clear shopping list
                         if 'shopping_list' in st.session_state:
                             del st.session_state.shopping_list
+                        
+                        # Clear all checkbox states
+                        keys_to_delete = [key for key in st.session_state.keys() 
+                                         if any(key.startswith(store) for store in 
+                                               ['costco_', 'whole_foods_', 'petes_fresh_market_', 
+                                                'jewel_', 'aldi_'])]
+                        for key in keys_to_delete:
+                            del st.session_state[key]
+                        
                         st.rerun()
                 
                 # Clear shopping list if stores changed

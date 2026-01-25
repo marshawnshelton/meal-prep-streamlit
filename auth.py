@@ -206,6 +206,63 @@ class FirebaseAuth:
         except Exception as e:
             st.error(f"Get meal plans error: {e}")
             return []
+    
+    def delete_meal_plan(self, user_id: str, id_token: str, plan_index: int) -> bool:
+        """
+        Delete a specific meal plan by index
+        
+        Args:
+            user_id: User's Firebase ID
+            id_token: Authentication token
+            plan_index: Index of plan to delete (0-based)
+        
+        Returns:
+            True if deletion successful
+        """
+        try:
+            # Get all meal plan documents
+            url = f"{self.firestore_url}/users/{user_id}/meal_plans"
+            headers = {"Authorization": f"Bearer {id_token}"}
+            
+            response = requests.get(url, headers=headers, timeout=5)
+            
+            if response.status_code != 200:
+                print(f"Failed to get plans: {response.status_code}")
+                return False
+            
+            data = response.json()
+            documents = data.get('documents', [])
+            
+            if not documents or plan_index < 0 or plan_index >= len(documents):
+                print(f"Invalid plan index: {plan_index}, total plans: {len(documents)}")
+                return False
+            
+            # Get the full document path to delete
+            doc_to_delete = documents[plan_index]
+            doc_name = doc_to_delete.get('name', '')
+            
+            if not doc_name:
+                print("No document name found")
+                return False
+            
+            print(f"Deleting document: {doc_name}")
+            
+            # Delete the document using full path
+            # The 'name' field contains the full resource path
+            delete_response = requests.delete(
+                f"https://firestore.googleapis.com/v1/{doc_name}",
+                headers=headers,
+                timeout=5
+            )
+            
+            print(f"Delete response: {delete_response.status_code}")
+            return delete_response.status_code == 200
+            
+        except Exception as e:
+            print(f"Error deleting meal plan: {e}")
+            import traceback
+            traceback.print_exc()
+            return False
 
 
 def init_session_state():
