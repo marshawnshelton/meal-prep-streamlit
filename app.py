@@ -513,8 +513,15 @@ def show_main_app():
         show_plan_selector()
     
     with tab2:
-        st.header("Custom Meal Selection")
-        st.info("⚠️ Custom meal selection temporarily disabled for optimization. Coming back soon!")
+        st.header("🎨 Custom Meal Selection")
+        
+        # Import and run custom plan feature
+        try:
+            from custom_plan import custom_plan_page
+            custom_plan_page()
+        except ImportError as e:
+            st.error(f"Custom Plan feature not available: {e}")
+            st.info("Make sure custom_plan.py is in your src/ directory")
     
     with tab3:
         st.header("📖 Browse All Recipes")
