@@ -65,16 +65,23 @@ def get_recipes():
     try:
         recipes = []
         
-        # Check if recipes is a dict or list
+        # Your recipes are organized by meal type: {'breakfast': [...], 'lunch': [...]}
         if isinstance(planner.recipes, dict):
-            for recipe_id, recipe_data in planner.recipes.items():
-                recipes.append({
-                    "id": recipe_id,
-                    **recipe_data
-                })
-        elif isinstance(planner.recipes, list):
-            for recipe_data in planner.recipes:
-                recipes.append(recipe_data)
+            for meal_type, recipe_list in planner.recipes.items():
+                if isinstance(recipe_list, list):
+                    for recipe_data in recipe_list:
+                        # Add an ID if not present
+                        recipe_with_id = recipe_data.copy()
+                        if 'id' not in recipe_with_id:
+                            # Create ID from name
+                            recipe_with_id['id'] = recipe_data['name'].lower().replace(' ', '_')
+                        recipes.append(recipe_with_id)
+                else:
+                    # Single recipe object
+                    recipe_with_id = recipe_list.copy()
+                    if 'id' not in recipe_with_id:
+                        recipe_with_id['id'] = recipe_list['name'].lower().replace(' ', '_')
+                    recipes.append(recipe_with_id)
         
         return {
             "success": True,
@@ -83,6 +90,8 @@ def get_recipes():
         }
     except Exception as e:
         print(f"Error loading recipes: {e}")
+        import traceback
+        traceback.print_exc()
         # Return empty list instead of failing
         return {
             "success": True,

@@ -78,7 +78,7 @@ export default function Home() {
             🍴 Meal Prep System
           </h1>
           <p className="text-gray-600">
-            Chicago's neighborhoods, in your kitchen
+            Chicago food, from plan to plate.
           </p>
           <div className="mt-2 flex gap-2">
             <span className="text-sm text-teal-600 bg-teal-50 px-3 py-1 rounded-full">
@@ -90,6 +90,14 @@ export default function Home() {
           </div>
         </div>
 
+<div className="mb-4">
+  <a 
+    href="/recipes" 
+    className="inline-block bg-purple-500 text-white px-6 py-3 rounded-lg hover:bg-purple-600 transition-colors font-semibold"
+  >
+    🍳 Browse All Recipes →
+  </a>
+</div>
         {/* Stats Cards */}
         <div className="grid grid-cols-3 gap-4 mb-8">
           <StatCard 
